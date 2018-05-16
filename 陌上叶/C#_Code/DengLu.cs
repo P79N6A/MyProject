@@ -66,8 +66,8 @@ namespace WindowsFormsApplication2
         //退出
         private void button2_Click(object sender, EventArgs e)
         {
-            MainDoor mainDoor = new MainDoor();
-            mainDoor.Show();
+            ListDisplay list=new ListDisplay();
+            list.Show();
             this.Hide();
         }
     }

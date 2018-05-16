@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication2
 {
     public partial class purchase : Form
@@ -16,6 +17,7 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.TextBox textBox1;
         public purchase(string name)
         {
+            Util.money = 0;
             this.name = name;
             init(name);
             InitializeComponent();
@@ -56,25 +58,41 @@ namespace WindowsFormsApplication2
             this.Controls.Add(textBox1);  //添加到窗体
         }
 
+        //立即购买
         private void btn_Click(object sender,EventArgs e)
         {
             //MessageBox.Show("正在购买处理中，请稍后。。");
 
             int count = Convert.ToInt16((string)List.list[name]);
-
-            if (count == 0)
+            if (Util.userPurchaseAmount == 0)
+                MessageBox.Show("您还未输入购买数量，请输入购买的数量");
+            else if (count == 0)
                 MessageBox.Show("来晚啦，零食售光了～～～下次记得来早些哦～～");
             else
             {
-                count--;
+                count=count-Util.userPurchaseAmount;
                 List.list.Remove(name);
                 List.list.Add(name, Convert.ToString(count));
-                MessageBox.Show("购买成功，正在出货中，请稍候哦～～");
-            }
+                //MessageBox.Show("购买成功，您一共购买 ["+this.name+"] "+Util.userPurchaseAmount+" 瓶，共消费"+Util.money+"元 。请你确认。。");
 
-            
+                DialogResult dr;
+                dr = MessageBox.Show("您一共购买 [" + this.name + "] " + Util.userPurchaseAmount + " 瓶，共消费" + Util.money + "元 。请你确认。。",
+                    "确认", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information);
+               if(dr==DialogResult.OK)
+                         MessageBox.Show("零食正在出机，请您及时取走，欢迎您下次光临");
+               else if (dr == DialogResult.Cancel)
+               {
+                   //不进行任何操作
+               }
+               else
+                   MessageBox.Show("你没有进行任何的操作！", "系统提示4");
+                    }
+
+            this.Hide();
             this.Controls.Clear();
             this.Close();
+            Util.userPurchaseAmount = 0;
             purchase purchase = new purchase(this.name);
             purchase.Show();
         }
@@ -88,10 +106,21 @@ namespace WindowsFormsApplication2
             {
                 Util.userPurchaseAmount++;
             }
-            this.Controls.Clear();
-            this.Close();
-            purchase purchase = new purchase(this.name);
-            purchase.Show();
+            
+            //购买数量更新
+            this.textBox3.Text = Convert.ToString(Util.userPurchaseAmount);
+
+            //计算剩余数量
+            int count = Convert.ToInt16(List.list[name]) - Util.userPurchaseAmount;
+            this.textBox1.Text = name + " 剩余>>" + (string)Convert.ToString(count);    //总数量更新
+
+            //预计金额刷新
+            //计算金额
+            double x = Convert.ToDouble(Util.price[name]);
+            int y = Util.userPurchaseAmount;
+            Util.money = x * y;
+            this.textBox5.Text = Convert.ToString(x * y) + "元";
+
         }
 
         //点击减号
@@ -101,10 +130,19 @@ namespace WindowsFormsApplication2
             {
                 Util.userPurchaseAmount--;
             }
-            this.Controls.Clear();
-            this.Close();
-            purchase purchase = new purchase(this.name);
-            purchase.Show();
+            //购买数量更新
+            this.textBox3.Text = Convert.ToString(Util.userPurchaseAmount);
+
+            //计算剩余数量
+            int count = Convert.ToInt16(List.list[name]) - Util.userPurchaseAmount;
+            this.textBox1.Text = name + " 剩余>>" + (string)Convert.ToString(count);
+
+            //预计金额刷新
+            //计算金额
+            double x = Convert.ToDouble(Util.price[name]);
+            int y = Util.userPurchaseAmount;
+            Util.money = x * y;
+            this.textBox5.Text = Convert.ToString(x * y) + "元";
         }
 
         private void load(object sender, EventArgs e)

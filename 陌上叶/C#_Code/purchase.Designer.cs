@@ -131,6 +131,7 @@ namespace WindowsFormsApplication2
             //计算金额
             double x = Convert.ToDouble(Util.price[name]);
             int y = Util.userPurchaseAmount;
+            Util.money = x*y;
             this.textBox5.Text = Convert.ToString(x*y)+"元";
             
             // 
@@ -167,11 +168,6 @@ namespace WindowsFormsApplication2
         private System.Windows.Forms.TextBox textBox2;
         private TextBox textBox4;
         private TextBox textBox5;
-
-       
-
-        
-
         
 
     }

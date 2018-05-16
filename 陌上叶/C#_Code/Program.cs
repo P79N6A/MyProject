@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApplication2
 {
     static class Program
@@ -26,7 +27,7 @@ namespace WindowsFormsApplication2
             Util priceUtil = new Util();
             priceUtil.initPrice();
 
-            Application.Run(new MainDoor());
+            Application.Run(new ListDisplay());
 
         }
     }

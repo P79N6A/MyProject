@@ -18,7 +18,7 @@ namespace WindowsFormsApplication2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Util.userPurchaseAmount = 0;
             purchase purchase=new purchase("冰红茶");
             purchase.Show();
 
@@ -27,6 +27,7 @@ namespace WindowsFormsApplication2
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Util.userPurchaseAmount = 0;
             purchase purchase = new purchase("冰糖雪梨");
             purchase.Show();
 
@@ -35,6 +36,7 @@ namespace WindowsFormsApplication2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Util.userPurchaseAmount = 0;
             purchase purchase = new purchase("红牛");
             purchase.Show();
 
@@ -45,6 +47,7 @@ namespace WindowsFormsApplication2
        
         private void button4_Click(object sender, EventArgs e)
         {
+            Util.userPurchaseAmount = 0;
             purchase purchase = new purchase("可口可乐");
             purchase.Show();
 
@@ -53,6 +56,7 @@ namespace WindowsFormsApplication2
 
         private void button5_Click(object sender, EventArgs e)
         {
+            Util.userPurchaseAmount = 0;
             purchase purchase = new purchase("脉动");
             purchase.Show();
 
@@ -62,6 +66,7 @@ namespace WindowsFormsApplication2
 
         private void button6_Click(object sender, EventArgs e)
         {
+            Util.userPurchaseAmount = 0;
             purchase purchase = new purchase("苏打水");
             purchase.Show();
 
@@ -74,6 +79,14 @@ namespace WindowsFormsApplication2
             MainDoor mainDoor=new MainDoor();
             mainDoor.Show();
             this.Hide();
+        }
+
+        //管理员管理跳转按钮
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DengLu dengLu = new DengLu();
+            dengLu.Show();
+            //this.Hide();
         }
        
 
@@ -116,6 +129,11 @@ namespace WindowsFormsApplication2
         {
             purchase purchase = new purchase("冰糖雪梨");
             purchase.Show();
+        }
+
+        private void ovalShape1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

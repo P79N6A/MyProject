@@ -31,7 +31,7 @@ namespace WindowsFormsApplication2
         //用户购物数量
         public static int userPurchaseAmount = 0;
         //用户输入金额
-        public static int money;
+        public static double money;
 
     }
 }
