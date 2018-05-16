@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Media;
+using System.IO.Ports;
 
 
 namespace WindowsFormsApplication2
@@ -15,6 +17,9 @@ namespace WindowsFormsApplication2
         private string name;
         Button btn1;  //声明一个按钮
         private System.Windows.Forms.TextBox textBox1;
+
+        
+
         public purchase(string name)
         {
             Util.money = 0;
@@ -36,6 +41,7 @@ namespace WindowsFormsApplication2
             this.btn1.BackColor = System.Drawing.Color.Transparent;
             this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn1.ForeColor = System.Drawing.Color.Black;
+
             this.Controls.Add(btn1);  //添加到窗体
 
             
@@ -54,6 +60,7 @@ namespace WindowsFormsApplication2
 
             //计算剩余数量
             int count = Convert.ToInt16(List.list[name]) - Util.userPurchaseAmount;
+            
             this.textBox1.Text = name+" 剩余>>"+(string)Convert.ToString(count);
             this.Controls.Add(textBox1);  //添加到窗体
         }
@@ -61,8 +68,8 @@ namespace WindowsFormsApplication2
         //立即购买
         private void btn_Click(object sender,EventArgs e)
         {
-            //MessageBox.Show("正在购买处理中，请稍后。。");
-
+            
+            
             int count = Convert.ToInt16((string)List.list[name]);
             if (Util.userPurchaseAmount == 0)
                 MessageBox.Show("您还未输入购买数量，请输入购买的数量");
@@ -79,14 +86,29 @@ namespace WindowsFormsApplication2
                 dr = MessageBox.Show("您一共购买 [" + this.name + "] " + Util.userPurchaseAmount + " 瓶，共消费" + Util.money + "元 。请你确认。。",
                     "确认", MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information);
-               if(dr==DialogResult.OK)
-                         MessageBox.Show("零食正在出机，请您及时取走，欢迎您下次光临");
-               else if (dr == DialogResult.Cancel)
-               {
-                   //不进行任何操作
-               }
-               else
-                   MessageBox.Show("你没有进行任何的操作！", "系统提示4");
+                if (dr == DialogResult.OK)
+                {
+                    MessageBox.Show("零食正在出机，请您及时取走，欢迎您下次光临");
+
+                    //操作硬件
+                    SerialPort serialPort1 = new SerialPort();
+                    //打开端口
+                    serialPort1.PortName = "COM3";
+                    serialPort1.BaudRate = 9600;
+                    serialPort1.Open();
+                    //发送信息
+                    byte[] senddata = new byte[1];
+                    //senddata[0] = Convert.ToByte(data,2);
+                    senddata = Encoding.Default.GetBytes("B");
+                    serialPort1.Write(senddata, 0, 1);
+                    
+                }
+                else if (dr == DialogResult.Cancel)
+                {
+                    //不进行任何操作
+                }
+                else
+                    MessageBox.Show("你没有进行任何的操作！", "系统提示4");
                     }
 
             this.Hide();

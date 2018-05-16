@@ -74,7 +74,8 @@ namespace WindowsFormsApplication2
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(25, 25);
             this.textBox3.TabIndex = 2;
-            this.textBox3.Text = Convert.ToString(Util.userPurchaseAmount);
+            this.textBox3.Text = "0";
+            //this.textBox3.Text = Convert.ToString(Util.userPurchaseAmount);
             // 
             // button2
             // 
@@ -128,11 +129,14 @@ namespace WindowsFormsApplication2
             this.textBox5.Size = new System.Drawing.Size(45, 25);
             this.textBox5.TabIndex = 7;
 
+            /*
             //计算金额
             double x = Convert.ToDouble(Util.price[name]);
             int y = Util.userPurchaseAmount;
             Util.money = x*y;
             this.textBox5.Text = Convert.ToString(x*y)+"元";
+             */
+            this.textBox5.Text = "0";
             
             // 
             // purchase

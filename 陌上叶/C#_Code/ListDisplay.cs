@@ -86,7 +86,7 @@ namespace WindowsFormsApplication2
         {
             DengLu dengLu = new DengLu();
             dengLu.Show();
-            //this.Hide();
+            this.Hide();
         }
        
 
@@ -134,6 +134,39 @@ namespace WindowsFormsApplication2
         private void ovalShape1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        
+        
+
+        System.ComponentModel.ComponentResourceManager resource1 = new ComponentResourceManager(typeof(ListDisplay));
+        
+
+        private void ApplyResource()
+        {
+            foreach (Control ctl in this.Controls)
+            {
+                resource1.ApplyResources(ctl, ctl.Name);
+            }
+            this.ResumeLayout(false);
+            this.PerformLayout();
+            resource1.ApplyResources(this, "$this");
+        }
+
+        
+        //切换到中文
+        private void chineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+               new System.Globalization.CultureInfo("zh-CN");
+            ApplyResource();
+        }
+        //切换到英文
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                new System.Globalization.CultureInfo("en-US");
+            ApplyResource();
         }
     }
 }

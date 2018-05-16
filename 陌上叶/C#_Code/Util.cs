@@ -33,5 +33,8 @@ namespace WindowsFormsApplication2
         //用户输入金额
         public static double money;
 
+
+        //语音播放
+        public static System.Media.SoundPlayer player2 = new System.Media.SoundPlayer();
     }
 }
