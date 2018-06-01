@@ -10,6 +10,23 @@
 <html>
 <head>
     <title>Xacml文档管理系统</title>
+
+    <style>
+
+        body{
+
+            background:url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527841466092&di=7e9695713763f2c9d01a1e19e8048f33&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201508%2F11%2F20150811213012_FheWZ.jpeg") no-repeat;
+            background-size: 100%;
+            height: 300px;
+        }
+
+        h1{
+            color:orange;
+            text-align:center;
+        }
+
+
+    </style>
 </head>
 <body>
 <h2 align="center" valign="center">Xacml文档管理系统</h2>
