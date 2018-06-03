@@ -117,13 +117,13 @@ public class XacmlController {
                         for (int k = 0; k < attrs.getLength(); k++) {
                             if (attrs.item(k).getNodeName().equalsIgnoreCase("AttributeId")) {
                                 String value = attrs.item(k).getNodeValue();
-                                if (value.endsWith("subject-id")) {
+                                if (value.substring(29,36).equals("subject")) {
                                     UserCount++;
                                     hasUser = true;
-                                } else if (value.endsWith("resource-id")) {
+                                } else if (value.substring(29,37).equals("resource")) {
                                     ResourceCount++;
                                     hasResource = true;
-                                } else if (value.endsWith("action-id")) {
+                                } else if (value.substring(29,35).equals("action")) {
                                     ActionCount++;
                                     hasAction = true;
                                 }
@@ -154,7 +154,7 @@ public class XacmlController {
                         if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeValue")) {
                             attrs = attributeValues.item(y).getAttributes();
                             for (int x = 0; x < attrs.getLength(); x++) {
-                                if (attrs.item(x).getNodeName().equals("DataType")) {                                 //DataType需要修改
+                                if (attrs.item(x).getNodeName().equals("DataType")) {
                                     System.out.println("DataType1>>   " + attrs.item(x).getNodeValue());
                                     map.put("DataType1", attrs.item(x).getNodeValue());
                                 }
@@ -164,12 +164,12 @@ public class XacmlController {
                         } else if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeDesignator")) {
                             attrs = attributeValues.item(y).getAttributes();
                             for (int x = 0; x < attrs.getLength(); x++) {
-                                if (attrs.item(x).getNodeName().equals("MustBePresent")) {                                 //DataType需要修改
+                                if (attrs.item(x).getNodeName().equals("MustBePresent")) {
                                     System.out.println("MustBePresent1>>   " + attrs.item(x).getNodeValue());
                                     map.put("MustBePresent1", attrs.item(x).getNodeValue());
                                 } else if (attrs.item(x).getNodeName().equals("AttributeId")) {
                                     System.out.println("AttributeId1>>   " + attrs.item(x).getNodeValue());
-                                    map.put("AttributeId1", attrs.item(x).getNodeValue());
+                                    map.put("AttributeId1", attrs.item(x).getNodeValue().substring(45));
                                 }
                             }
                         }
@@ -194,7 +194,7 @@ public class XacmlController {
                         if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeValue")) {
                             attrs = attributeValues.item(y).getAttributes();
                             for (int x = 0; x < attrs.getLength(); x++) {
-                                if (attrs.item(x).getNodeName().equals("DataType")) {                                 //DataType需要修改
+                                if (attrs.item(x).getNodeName().equals("DataType")) {
                                     System.out.println("DataType2>>   " + attrs.item(x).getNodeValue());
                                     map.put("DataType2", attrs.item(x).getNodeValue());
                                 }
@@ -205,12 +205,12 @@ public class XacmlController {
                         } else if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeDesignator")) {
                             attrs = attributeValues.item(y).getAttributes();
                             for (int x = 0; x < attrs.getLength(); x++) {
-                                if (attrs.item(x).getNodeName().equals("MustBePresent")) {                                 //DataType需要修改
+                                if (attrs.item(x).getNodeName().equals("MustBePresent")) {
                                     System.out.println("MustBePresent2>>   " + attrs.item(x).getNodeValue());
                                     map.put("MustBePresent2", attrs.item(x).getNodeValue());
                                 } else if (attrs.item(x).getNodeName().equals("AttributeId")) {
                                     System.out.println("AttributeId2>>   " + attrs.item(x).getNodeValue());
-                                    map.put("AttributeId2", attrs.item(x).getNodeValue());
+                                    map.put("AttributeId2", attrs.item(x).getNodeValue().substring(47));
                                 }
                             }
                         }
@@ -235,7 +235,7 @@ public class XacmlController {
                         if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeValue")) {
                             attrs = attributeValues.item(y).getAttributes();
                             for (int x = 0; x < attrs.getLength(); x++) {
-                                if (attrs.item(x).getNodeName().equals("DataType")) {                                 //DataType需要修改
+                                if (attrs.item(x).getNodeName().equals("DataType")) {
                                     System.out.println("DataType3>>   " + attrs.item(x).getNodeValue());
                                     map.put("DataType3", attrs.item(x).getNodeValue());
                                 }
@@ -245,12 +245,12 @@ public class XacmlController {
                         } else if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeDesignator")) {
                             attrs = attributeValues.item(y).getAttributes();
                             for (int x = 0; x < attrs.getLength(); x++) {
-                                if (attrs.item(x).getNodeName().equals("MustBePresent")) {                                 //DataType需要修改
+                                if (attrs.item(x).getNodeName().equals("MustBePresent")) {
                                     System.out.println("MustBePresent3>>   " + attrs.item(x).getNodeValue());
                                     map.put("MustBePresent3", attrs.item(x).getNodeValue());
                                 } else if (attrs.item(x).getNodeName().equals("AttributeId")) {
                                     System.out.println("AttributeId3>>   " + attrs.item(x).getNodeValue());
-                                    map.put("AttributeId3", attrs.item(x).getNodeValue());
+                                    map.put("AttributeId3", attrs.item(x).getNodeValue().substring(43));
                                 }
                             }
                         }
@@ -294,11 +294,11 @@ public class XacmlController {
                     for (int k = 0; k < attrs.getLength(); k++) {
                         if (attrs.item(k).getNodeName().equalsIgnoreCase("AttributeId")) {
                             String value = attrs.item(k).getNodeValue();
-                            if (value.endsWith("subject-id")) {
+                            if (value.substring(29,36).equals("subject")) {
                                 hasRuleUser = true;
-                            } else if (value.endsWith("resource-id")) {
+                            } else if (value.substring(29,37).equals("resource")) {
                                 hasRuleResource = true;
-                            } else if (value.endsWith("action-id")) {
+                            } else if (value.substring(29,35).equals("action")) {
                                 hasRuleAction = true;
                             }
                         }
@@ -344,7 +344,7 @@ public class XacmlController {
                             if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeValue")) {
                                 attrs = attributeValues.item(y).getAttributes();
                                 for (int x = 0; x < attrs.getLength(); x++) {
-                                    if (attrs.item(x).getNodeName().equals("DataType")) {                                 //DataType需要修改
+                                    if (attrs.item(x).getNodeName().equals("DataType")) {
                                         System.out.println("DataType4>>   " + attrs.item(x).getNodeValue());
                                         RulesInfo.put("DataType4", attrs.item(x).getNodeValue());
                                     }
@@ -354,12 +354,12 @@ public class XacmlController {
                             } else if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeDesignator")) {
                                 attrs = attributeValues.item(y).getAttributes();
                                 for (int x = 0; x < attrs.getLength(); x++) {
-                                    if (attrs.item(x).getNodeName().equals("MustBePresent")) {                                 //DataType需要修改
+                                    if (attrs.item(x).getNodeName().equals("MustBePresent")) {
                                         System.out.println("MustBePresent4>>   " + attrs.item(x).getNodeValue());
                                         RulesInfo.put("MustBePresent4", attrs.item(x).getNodeValue());
                                     } else if (attrs.item(x).getNodeName().equals("AttributeId")) {
                                         System.out.println("AttributeId4>>   " + attrs.item(x).getNodeValue());
-                                        RulesInfo.put("AttributeId4", attrs.item(x).getNodeValue());
+                                        RulesInfo.put("AttributeId4", attrs.item(x).getNodeValue().substring(45));
                                     }
                                 }
                             }
@@ -388,7 +388,7 @@ public class XacmlController {
                             if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeValue")) {
                                 attrs = attributeValues.item(y).getAttributes();
                                 for (int x = 0; x < attrs.getLength(); x++) {
-                                    if (attrs.item(x).getNodeName().equals("DataType")) {                                 //DataType需要修改
+                                    if (attrs.item(x).getNodeName().equals("DataType")) {
                                         System.out.println("DataType5>>   " + attrs.item(x).getNodeValue());
                                         RulesInfo.put("DataType5", attrs.item(x).getNodeValue());
                                     }
@@ -398,12 +398,12 @@ public class XacmlController {
                             } else if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeDesignator")) {
                                 attrs = attributeValues.item(y).getAttributes();
                                 for (int x = 0; x < attrs.getLength(); x++) {
-                                    if (attrs.item(x).getNodeName().equals("MustBePresent")) {                                 //DataType需要修改
+                                    if (attrs.item(x).getNodeName().equals("MustBePresent")) {
                                         System.out.println("MustBePresent5>>   " + attrs.item(x).getNodeValue());
                                         RulesInfo.put("MustBePresent5", attrs.item(x).getNodeValue());
                                     } else if (attrs.item(x).getNodeName().equals("AttributeId")) {
                                         System.out.println("AttributeId5>>   " + attrs.item(x).getNodeValue());
-                                        RulesInfo.put("AttributeId5", attrs.item(x).getNodeValue());
+                                        RulesInfo.put("AttributeId5", attrs.item(x).getNodeValue().substring(47));
                                     }
                                 }
                             }
@@ -434,7 +434,7 @@ public class XacmlController {
                             if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeValue")) {
                                 attrs = attributeValues.item(y).getAttributes();
                                 for (int x = 0; x < attrs.getLength(); x++) {
-                                    if (attrs.item(x).getNodeName().equals("DataType")) {                                 //DataType需要修改
+                                    if (attrs.item(x).getNodeName().equals("DataType")) {
                                         System.out.println("DataType6>>   " + attrs.item(x).getNodeValue());
                                         RulesInfo.put("DataType6", attrs.item(x).getNodeValue());
                                     }
@@ -444,12 +444,12 @@ public class XacmlController {
                             } else if (attributeValues.item(y).getNodeName().equalsIgnoreCase("AttributeDesignator")) {
                                 attrs = attributeValues.item(y).getAttributes();
                                 for (int x = 0; x < attrs.getLength(); x++) {
-                                    if (attrs.item(x).getNodeName().equals("MustBePresent")) {                                 //DataType需要修改
+                                    if (attrs.item(x).getNodeName().equals("MustBePresent")) {
                                         System.out.println("MustBePresent6>>   " + attrs.item(x).getNodeValue());
                                         RulesInfo.put("MustBePresent6", attrs.item(x).getNodeValue());
                                     } else if (attrs.item(x).getNodeName().equals("AttributeId")) {
                                         System.out.println("AttributeId6>>   " + attrs.item(x).getNodeValue());
-                                        RulesInfo.put("AttributeId6", attrs.item(x).getNodeValue());
+                                        RulesInfo.put("AttributeId6", attrs.item(x).getNodeValue().substring(43));
                                     }
                                 }
                             }
@@ -546,7 +546,7 @@ public class XacmlController {
 
         String fileName = URLDecoder.decode(request.getParameter("PolicyId"));                 //名称为policyId,
         if (fileName.equals("")) {
-            fileName = "PolicyId";      //默认名称为PolicyId
+            fileName = "PolicyId";                                                                //默认名称为PolicyId
         }
 
         System.out.println("PolicyId>>     " + fileName);
@@ -564,7 +564,7 @@ public class XacmlController {
             String Version = request.getParameter("Version");
 
             if (Version.equals(""))
-                Version = "1.0";             //Version默认为1.0
+                Version = "1.0";                                                               //Version默认为1.0
             policy.setAttribute("Version", Version);
             policy.setAttribute("xsi:schemaLocation", "urn:oasis:names:tc:xacml:3.0:" +
                     "policy:schema:os access_control-xacml-2.0-policy-schema-os.xsd");
@@ -595,6 +595,18 @@ public class XacmlController {
             String AttributeId1 = URLDecoder.decode(request.getParameter("AttributeId1"));
             String AttributeId2 = URLDecoder.decode(request.getParameter("AttributeId2"));
             String AttributeId3 = URLDecoder.decode(request.getParameter("AttributeId3"));
+
+            //为空处理
+            if(AttributeId1.equals("")){
+                AttributeId1="id";
+            }
+            if(AttributeId2.equals("")){
+                AttributeId2="id";
+            }if(AttributeId3.equals("")){
+                AttributeId3="id";
+            }
+
+
             String MustBePresent1 = request.getParameter("MustBePresent1");
             String MustBePresent2 = request.getParameter("MustBePresent2");
             String MustBePresent3 = request.getParameter("MustBePresent3");
@@ -613,11 +625,11 @@ public class XacmlController {
                 match1.setAttribute("MatchId", MatchId1);
 
                 Element attributeValue1 = doc.createElement("AttributeValue");
-                attributeValue1.setAttribute("DataType", DataType1);            //只改1
+                attributeValue1.setAttribute("DataType", DataType1);
                 attributeValue1.setTextContent(value1);
 
                 Element attributeDesignator1 = doc.createElement("AttributeDesignator");
-                attributeDesignator1.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:subject:subject-id");
+                attributeDesignator1.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:subject:subject-"+AttributeId1);
                 attributeDesignator1.setAttribute("Catagory", "urn:oasis:names:tc:xacml:3.0:subject-catagory:access-subject");
                 attributeDesignator1.setAttribute("DataType", DataType1);
                 attributeDesignator1.setAttribute("MustBePresent", MustBePresent1);
@@ -645,7 +657,7 @@ public class XacmlController {
                 attributeValue2.setTextContent(value2);
 
                 Element attributeDesignator2 = doc.createElement("AttributeDesignator");
-                attributeDesignator2.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:resource:" + "resource-id");
+                attributeDesignator2.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:resource:resource-"+AttributeId2);
                 attributeDesignator2.setAttribute("Catagory", "urn:oasis:names:tc:xacml:3.0:attribute-catagory:resource");
                 attributeDesignator2.setAttribute("DataType", DataType2);
                 attributeDesignator2.setAttribute("MustBePresent", MustBePresent2);
@@ -673,7 +685,7 @@ public class XacmlController {
                 attributeValue3.setTextContent(value3);
 
                 Element attributeDesignator3 = doc.createElement("AttributeDesignator");
-                attributeDesignator3.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:action:" + "action-id");
+                attributeDesignator3.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:action:action-"+AttributeId3);
                 attributeDesignator3.setAttribute("Catagory", "urn:oasis:names:tc:xacml:3.0:attribute-catagory:action");
                 attributeDesignator3.setAttribute("DataType", DataType3);
                 attributeDesignator3.setAttribute("MustBePresent", MustBePresent3);
@@ -715,6 +727,16 @@ public class XacmlController {
                 String AttributeId5 = URLDecoder.decode(AttributeId5s[i]);
                 String AttributeId6 = URLDecoder.decode(AttributeId6s[i]);
 
+                //为空处理
+                if(AttributeId4.equals("")){
+                    AttributeId4="id";
+                }
+                if(AttributeId5.equals("")){
+                    AttributeId5="id";
+                }if(AttributeId6.equals("")){
+                    AttributeId6="id";
+                }
+
                 String MustBePresent4 = URLDecoder.decode(MustBePresent4s[i]);
                 String MustBePresent5 = URLDecoder.decode(MustBePresent5s[i]);
                 String MustBePresent6 = URLDecoder.decode(MustBePresent6s[i]);
@@ -753,7 +775,7 @@ public class XacmlController {
                     attributeValue4.setTextContent(value4);                          //只改value
 
                     Element attributeDesignator4 = doc.createElement("AttributeDesignator");
-                    attributeDesignator4.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:subject:subject-id");
+                    attributeDesignator4.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:subject:subject-"+AttributeId4);
 
                     attributeDesignator4.setAttribute("Catagory", "urn:oasis:names:tc:xacml:3.0:attribute-catagory:access-subject");
                     attributeDesignator4.setAttribute("DataType", DataType4);
@@ -780,7 +802,7 @@ public class XacmlController {
                     attributeValue5.setTextContent(value5);
 
                     Element attributeDesignator5 = doc.createElement("AttributeDesignator");
-                    attributeDesignator5.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:resource:" + "resource-id");
+                    attributeDesignator5.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:resource:resource-"+AttributeId5);
                     attributeDesignator5.setAttribute("Catagory", "urn:oasis:names:tc:xacml:3.0:attribute-catagory:resource");
                     attributeDesignator5.setAttribute("DataType", DataType5);
                     attributeDesignator5.setAttribute("MustBePresent", MustBePresent5);
@@ -808,7 +830,7 @@ public class XacmlController {
                     attributeValue6.setTextContent(value6);
 
                     Element attributeDesignator6 = doc.createElement("AttributeDesignator");
-                    attributeDesignator6.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:action:" + "action-id");
+                    attributeDesignator6.setAttribute("AttributeId", "urn:oasis:names:tc:xacml:3.0:action:action-"+AttributeId6);
                     attributeDesignator6.setAttribute("Catagory", "urn:oasis:names:tc:xacml:3.0:attribute-catagory:action");
                     attributeDesignator6.setAttribute("DataType", DataType6);
                     attributeDesignator6.setAttribute("MustBePresent", MustBePresent6);

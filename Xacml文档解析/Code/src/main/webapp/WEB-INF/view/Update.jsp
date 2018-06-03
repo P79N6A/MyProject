@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <label for="description1" class="col-sm-2 control-label">description</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" rows="3" id="description1"><%=map.get("Description1")%>></textarea>
+                                        <textarea class="form-control" rows="3" id="description1"><%=map.get("Description1")%></textarea>
                                     </div>
                                 </div>
                             </div>
