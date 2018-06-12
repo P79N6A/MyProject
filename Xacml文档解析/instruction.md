@@ -9,7 +9,7 @@
 
 工具：
     1.前端
-        基于HTML+CSS+JavaScript+Jquery+Ajax
+        基于HTML+CSS+JavaScript+Jquery+Ajax+bootstrapt
     2.后端
         基于Spring+SpringMVC
 ```
