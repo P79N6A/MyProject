@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Media;
-
+using System.Speech.Synthesis;
 namespace WindowsFormsApplication2
 {
     static class Program
@@ -16,23 +16,35 @@ namespace WindowsFormsApplication2
         {
 
             Application.EnableVisualStyles();
+            try
+            {
+                Application.SetCompatibleTextRenderingDefault(false);
+            }
+            catch (Exception ex)
+            {
 
-            Application.SetCompatibleTextRenderingDefault(false);
-
+            }
             //初始化货物储存仓库
             List list = new List();
             list.init();
 
+            //临时清单代替固定清单
+            List.copyList2Temp();
+
             //初始化零食价格
-            Util priceUtil = new Util();
-            priceUtil.initPrice();
+            Util.initPrice();
 
-            //语音播放
-            
-            Util.player2.SoundLocation = @"F:\RuiDer_Code\C#\programs\AutomaticSaleMachine\WindowsFormsApplication2\wav\卡农.wav";
-            Util.player2.PlayLooping();
-            Application.Run(new ListDisplay());
+            //语音播放初始化
+            SpeechSynthesizer player1=new SpeechSynthesizer();
+            player1.SpeakAsync("欢迎使用");
+            //初始化舵机角度
+            Util.initAngle();
 
+            //初始化购物车
+            Util.initCart();
+
+            Application.Run(Util.list);
+            //Application.Run(new Form3());
         }
     }
 }

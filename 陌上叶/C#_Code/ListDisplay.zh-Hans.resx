@@ -119,121 +119,85 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 162</value>
+    <value>576, 162</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>823, 162</value>
+    <value>835, 162</value>
   </data>
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1056, 162</value>
+    <value>1100, 162</value>
   </data>
   <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 431</value>
+    <value>564, 404</value>
   </data>
   <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>823, 424</value>
+    <value>835, 404</value>
   </data>
   <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1056, 424</value>
+    <value>1100, 404</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 13.8pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>585, 335</value>
+    <value>583, 332</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 24</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Iced Black Tea</value>
+    <value>142, 24</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 9pt</value>
+    <value>宋体, 13.8pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>820, 335</value>
+    <value>831, 332</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 15</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Sweet stewed snow pear </value>
+    <value>118, 24</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 13.8pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1057, 335</value>
+    <value>1096, 332</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 24</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Red Bull     </value>
+    <value>142, 24</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 13.8pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1066, 604</value>
+    <value>1096, 576</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 24</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>soda water     </value>
+    <value>142, 24</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 13.8pt</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>585, 604</value>
+    <value>572, 576</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 24</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Coca Cola </value>
+    <value>142, 24</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>宋体, 13.8pt</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>819, 604</value>
+    <value>831, 576</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 24</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>ripple  </value>
+    <value>142, 24</value>
   </data>
   <data name="dateTimePicker1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1176, 44</value>
-  </data>
-  <data name="button8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 14.25pt, style=Bold</value>
+    <value>1203, 55</value>
   </data>
   <data name="button8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1176, 73</value>
+    <value>1203, 91</value>
   </data>
   <data name="button8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 40</value>
-  </data>
-  <data name="button8.Text" xml:space="preserve">
-    <value>Maneger</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1374, 32</value>
-  </data>
-  <data name="菜单ToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 14.25pt, style=Bold</value>
-  </data>
-  <data name="菜单ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 28</value>
-  </data>
-  <data name="菜单ToolStripMenuItem.Text" xml:space="preserve">
-    <value>Choose Language</value>
+    <value>141, 36</value>
   </data>
   <data name="chineseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 28</value>
@@ -241,139 +205,112 @@
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>171, 28</value>
   </data>
+  <data name="菜单ToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 14.25pt, style=Bold</value>
+  </data>
+  <data name="菜单ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 28</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1419, 32</value>
+  </data>
   <data name="buttonfs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 10.8pt</value>
+    <value>宋体, 13.8pt</value>
   </data>
   <data name="buttonfs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 118</value>
+    <value>3, 140</value>
   </data>
   <data name="buttonfs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 41</value>
+    <value>144, 40</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>387, 660</value>
+    <value>396, 695</value>
   </data>
-  <data name="flush.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 22</value>
+  <data name="flush.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 288</value>
   </data>
-  <data name="flush.Text" xml:space="preserve">
-    <value>flush</value>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 185</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 12pt, style=Bold</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 160</value>
+    <value>3, 189</value>
   </data>
-  <data name="purchaseBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 22</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 20</value>
   </data>
-  <data name="purchaseBtn.Text" xml:space="preserve">
-    <value>Purchase </value>
+  <data name="purchaseBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>262, 620</value>
   </data>
-  <data name="allRm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 22</value>
+  <data name="allRm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 620</value>
   </data>
-  <data name="allRm.Text" xml:space="preserve">
-    <value>RemoveAll</value>
+  <data name="cartWaterBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 544</value>
   </data>
-  <data name="cartWaterBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
+  <data name="cartDongBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 505</value>
   </data>
-  <data name="cartWaterBtn.Text" xml:space="preserve">
-    <value>remove</value>
+  <data name="cartLeBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 465</value>
   </data>
-  <data name="cartDongBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
+  <data name="cartNiuBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 423</value>
   </data>
-  <data name="cartDongBtn.Text" xml:space="preserve">
-    <value>remove</value>
+  <data name="cartPearBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 385</value>
   </data>
-  <data name="cartLeBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
-  <data name="cartLeBtn.Text" xml:space="preserve">
-    <value>remove</value>
-  </data>
-  <data name="cartNiuBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
-  <data name="cartNiuBtn.Text" xml:space="preserve">
-    <value>remove</value>
-  </data>
-  <data name="cartPearBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
-  <data name="cartPearBtn.Text" xml:space="preserve">
-    <value>remove</value>
-  </data>
-  <data name="cartTeaBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
-  </data>
-  <data name="cartTeaBtn.Text" xml:space="preserve">
-    <value>remove</value>
+  <data name="cartTeaBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 347</value>
   </data>
   <data name="cartWaterNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 492</value>
+    <value>143, 551</value>
   </data>
   <data name="cartDongNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 454</value>
+    <value>143, 512</value>
   </data>
   <data name="cartLeNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 412</value>
+    <value>143, 469</value>
   </data>
   <data name="cartNiuNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 374</value>
+    <value>143, 430</value>
   </data>
   <data name="cartPearNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 332</value>
+    <value>143, 392</value>
   </data>
   <data name="cartTeaNo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 287</value>
+    <value>143, 351</value>
   </data>
-  <data name="cartWater.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 20</value>
+  <data name="cartWater.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 551</value>
   </data>
-  <data name="cartWater.Text" xml:space="preserve">
-    <value>soda water</value>
+  <data name="cartDong.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 512</value>
   </data>
-  <data name="cartDong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
+  <data name="cartLe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 465</value>
   </data>
-  <data name="cartDong.Text" xml:space="preserve">
-    <value>ripple</value>
-  </data>
-  <data name="cartLe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 20</value>
-  </data>
-  <data name="cartLe.Text" xml:space="preserve">
-    <value>Coca Cola</value>
-  </data>
-  <data name="cartNiu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 20</value>
-  </data>
-  <data name="cartNiu.Text" xml:space="preserve">
-    <value>Red Bull</value>
+  <data name="cartNiu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 426</value>
   </data>
   <data name="cartPear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 328</value>
+    <value>12, 388</value>
   </data>
-  <data name="cartPear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 20</value>
+  <data name="cartTea.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 347</value>
   </data>
-  <data name="cartPear.Text" xml:space="preserve">
-    <value> snow pear </value>
-  </data>
-  <data name="cartTea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 20</value>
-  </data>
-  <data name="cartTea.Text" xml:space="preserve">
-    <value>Iced Black Tea</value>
+  <data name="Cart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 271</value>
   </data>
   <data name="textBox0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 194</value>
+    <value>144, 184</value>
+  </data>
+  <data name="textBox0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 25</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1374, 693</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Snacks List</value>
+    <value>1419, 717</value>
   </data>
 </root>

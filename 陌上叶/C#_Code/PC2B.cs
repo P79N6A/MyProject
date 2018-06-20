@@ -45,8 +45,8 @@ namespace WindowsFormsApplication2
         //设置端口
         private void SetComConfig()
         {
-            serialPort1.PortName = "COM3";
-            serialPort1.BaudRate = 9600;
+            serialPort1.PortName = "COM4";          
+            serialPort1.BaudRate = 115200;       
             serialPort1.Open();
         }
 
@@ -83,6 +83,11 @@ namespace WindowsFormsApplication2
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

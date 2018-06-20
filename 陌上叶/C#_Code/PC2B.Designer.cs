@@ -37,9 +37,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(73, 159);
+            this.button1.Location = new System.Drawing.Point(55, 127);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(262, 125);
+            this.button1.Size = new System.Drawing.Size(196, 100);
             this.button1.TabIndex = 0;
             this.button1.Text = "发送";
             this.button1.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(475, 160);
+            this.button2.Location = new System.Drawing.Point(356, 128);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(255, 123);
+            this.button2.Size = new System.Drawing.Size(191, 98);
             this.button2.TabIndex = 1;
             this.button2.Text = "打开端口";
             this.button2.UseVisualStyleBackColor = true;
@@ -57,26 +59,30 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 38);
+            this.textBox1.Location = new System.Drawing.Point(58, 30);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 68);
+            this.textBox1.Size = new System.Drawing.Size(194, 55);
             this.textBox1.TabIndex = 2;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(483, 36);
+            this.textBox2.Location = new System.Drawing.Point(362, 29);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(246, 69);
+            this.textBox2.Size = new System.Drawing.Size(186, 56);
             this.textBox2.TabIndex = 3;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(312, 337);
+            this.button3.Location = new System.Drawing.Point(234, 270);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(191, 92);
+            this.button3.Size = new System.Drawing.Size(143, 74);
             this.button3.TabIndex = 4;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
@@ -84,14 +90,15 @@
             // 
             // PC2B
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 454);
+            this.ClientSize = new System.Drawing.Size(674, 363);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PC2B";
             this.Text = "PC2B";
             this.Load += new System.EventHandler(this.PC2B_Load);

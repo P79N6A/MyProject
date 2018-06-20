@@ -6,15 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.IO.Ports;
 namespace WindowsFormsApplication2
 {
     public partial class DengLu : Form
     {
         private string userName;
         private string password;
-
-        public DengLu()
+        
+        public  DengLu()
         {
             InitializeComponent();
         }
@@ -47,7 +47,7 @@ namespace WindowsFormsApplication2
             {
                 if (Util.password.Equals(this.password))
                 {
-                    ManagerUtil managerUtil = new ManagerUtil();
+                    ManagerUtil2 managerUtil = new ManagerUtil2();
                     managerUtil.Show();
                     this.Hide();
                 }
