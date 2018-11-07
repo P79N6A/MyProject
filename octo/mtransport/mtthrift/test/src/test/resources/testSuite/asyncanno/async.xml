@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="clientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/> <!-- 接口名 -->
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>  <!-- 本地appkey -->
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>  <!-- 目标 Server Appkey  -->
+        <property name="remoteServerPort" value="9095" />
+        <!-- 这里设置异步模式，默认false -->
+        <property name="async" value="true"/>
+        <property name="nettyIO" value="true"/>
+    </bean>
+
+
+    <bean id="clientProxy1" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotation.TestService"/> <!-- 接口名 -->
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>  <!-- 本地appkey -->
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>  <!-- 目标 Server Appkey  -->
+        <property name="remoteServerPort" value="9094" />
+        <!-- 这里设置异步模式，默认false -->
+        <property name="async" value="true"/>
+        <property name="nettyIO" value="true"/>
+        <property name="timeout" value="1000" />
+    </bean>
+
+    <bean id="countdown" class="java.util.concurrent.CountDownLatch">
+        <constructor-arg index="0" value="2" />
+    </bean>
+</beans>

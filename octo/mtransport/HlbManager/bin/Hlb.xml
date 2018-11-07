@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<HLB>
+    <!--HlbManager appkey-->
+    <appkey>com.sankuai.inf.HlbManager</appkey>
+    <!--nginx所在集群业务线代码-->
+    <business>0,1,2,3,4,5,6,7,8,9,10,100</business>
+    <!--HlbManager暴露给rd使用的http端口-->
+    <hlbManagerHttpPort>9527</hlbManagerHttpPort>
+
+    <!--nginx机器所在ip，默认本机-->
+    <nginxIp>127.0.0.1</nginxIp>
+    <!--tengine接收HlbManger消息的端口-->
+    <nginxDyPort>60000</nginxDyPort>
+    <!--接口鉴权key-->
+    <nginxSecureKey>meituan20141226</nginxSecureKey>
+
+    <!--nginx bin所在路径-->
+    <nginxBinPath>/usr/sbin/nginx</nginxBinPath>
+    <!--nginx Pid所在路径-->
+    <nginxPidPath>/var/run/%nginx.pid</nginxPidPath>
+    <!--nginx 配置路径prefix，由puppet管理-->
+    <nginxConfigPrefix>/etc/nginx/hlb</nginxConfigPrefix>
+    <!--HlbManager生成的appkey.conf所在相对路径-->
+    <nginxAppkeyConf>appkey.conf</nginxAppkeyConf>
+    <!--迁移upstream落地相对路径-->
+    <nginxOriginalUpstreamPath>/hlb_original_upstream</nginxOriginalUpstreamPath>
+    
+    <!--sgagent所在机器ip,默认本机-->
+    <sgagentIp>127.0.0.1</sgagentIp>
+    <!--sgagent服务端端口-->
+    <sgagentPort>5266</sgagentPort>
+    <!--HlbManager调用sg_agent拉取周期（单位秒）-->
+    <sgagentUpdateTime>20</sgagentUpdateTime>
+    
+    <!--MNS Cache appkey-->
+    <mnscAppkey>com.sankuai.inf.mnsc</mnscAppkey>
+    <!--HlbManager调用MNSCache拉取周期（单位秒）-->
+    <mnscUpdateTime>10</mnscUpdateTime>
+    
+    <!--动态upstream配置：nginxType-->
+    <upstreamNginxType>web</upstreamNginxType>
+    <!--动态upstream配置：IDCType-->
+    <upstreamIDCType>idc-dx</upstreamIDCType>
+    <!--动态upstream配置：本节点是否属于灰度分组-->
+    <upstreamIsGrey>0</upstreamIsGrey>
+    
+</HLB>

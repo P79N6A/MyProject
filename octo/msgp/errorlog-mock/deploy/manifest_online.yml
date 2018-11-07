@@ -1,0 +1,28 @@
+version: v1
+common:
+  os: centos7
+  tools:
+    oracle-jdk: 7
+  env:
+    CURRENT_ENV: online
+build:
+  tools:
+    maven: 3.3.3
+  run:
+    workDir: msgp/errorlog-mock/
+    cmd: 
+      - sh deploy/compile.sh
+  env:
+    MAVEN_ENABLE_DEP_CHECK: 0
+  target:
+    distDir: msgp/errorlog-mock/target/
+    files: 
+      - ./*.war
+      - ../deploy
+deploy: 
+  targetDir: /opt/meituan/apps/errorlog-mock/
+  tools:
+  run:
+    workDir: /opt/meituan/apps/errorlog-mock/
+    cmd: 
+      - sh deploy/run.sh

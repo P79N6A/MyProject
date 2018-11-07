@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="serviceProcessor" class="com.sankuai.octo.benchmark.thrift.EchoServiceImpl">
+    </bean>
+
+    <bean id="serverPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="appKey" value="com.meituan.inf.rpc.benchmark"/>
+        <property name="port" value="10008"/>
+        <property name="serviceInterface" value="com.sankuai.octo.benchmark.thrift.EchoService"/>
+        <property name="serviceImpl" ref="serviceProcessor"/>
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="commonClient" class="com.sankuai.octo.benchmark.client.CommonClient" init-method="init" />
+</beans>

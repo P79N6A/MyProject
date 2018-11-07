@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SGAgentServiceList>
+    <!-- MtConfig-server主机与端口 -->
+    <MtConfigServerHost>
+        <Item>10.4.233.103:9001</Item>
+        <Item>10.4.233.84:9001</Item>
+        <Item>10.4.243.201:9001</Item>
+    </MtConfigServerHost>
+</SGAgentServiceList>

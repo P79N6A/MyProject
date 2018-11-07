@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="idlClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="remoteServerPort" value="9002"/>
+    </bean>
+
+    <bean id="annotationClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/>
+        <property name="remoteServerPort" value="9002"/>
+    </bean>
+
+    <bean id="idlClientProxy2" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="remoteServerPort" value="9003"/>
+    </bean>
+
+    <bean id="annotationClientProxy2" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/>
+        <property name="remoteServerPort" value="9003"/>
+    </bean>
+
+</beans>

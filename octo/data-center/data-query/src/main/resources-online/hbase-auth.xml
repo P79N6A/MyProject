@@ -1,0 +1,26 @@
+<configuration>
+    <property>
+        <name>hbase.security.authentication</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hbase.rpc.engine</name>
+        <value>org.apache.hadoop.hbase.ipc.SecureRpcEngine</value>
+    </property>
+    <property>
+        <name>hbase.ipc.client.fallback-to-simple-auth-allowed</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hbase.app.keytab.file</name>
+        <value>/opt/meituan/mobile/data-query/webroot/WEB-INF/classes/octo.keytab</value>
+    </property>
+    <property>
+        <name>hbase.app.kerberos.principal</name>
+        <value>hbase-default/octo@SANKUAI.COM</value>
+    </property>
+</configuration>

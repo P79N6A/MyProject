@@ -1,0 +1,20 @@
+{
+  "name": "@mtfe/mt-config",
+  "version": "2.0.1",
+  "description": "配置中心node sdk",
+  "main": "index.js",
+  "dependencies": {
+    "@mtfe/turbo-thrift": "^0.7.1",
+    "data-type": "^0.1.2",
+    "promise": "^7.1.1"
+  },
+  "devDependencies": {
+    "test": "^0.6.0"
+  },
+  "scripts": {
+    "test": "node test/index"
+  },
+  "author": "liaozhongwu",
+  "license": "ISC",
+  "gypfile": "true"
+}

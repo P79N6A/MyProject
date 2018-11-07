@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="serverPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.updater.thrift.UpdaterService"/> <!-- 接口类 -->
+        <property name="serviceImpl" ref="updaterService"/> <!-- 实现类 -->
+        <property name="appKey" value="com.sankuai.inf.octo.scannerupdater"/>  <!-- 本地appkey -->
+        <property name="port" value="9010"/> <!-- 监听端口 -->
+    </bean>
+
+</beans>

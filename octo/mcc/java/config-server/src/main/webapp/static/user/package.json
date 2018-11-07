@@ -1,0 +1,15 @@
+{
+  "name": "mtfe_config-user-client",
+  "version": "0.0.0",
+  "description": "",
+  "main": "user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "template_list": "cat template/list.micro | node_modules/.bin/template_compile --namespace mt.config.user.template --name list --module config-user/template/list-tpl > template/list-tpl.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mtfe_template_compile": "~0.1.5"
+  }
+}

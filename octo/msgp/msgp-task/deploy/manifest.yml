@@ -1,0 +1,22 @@
+version: v1
+common:
+  os: crane
+  tools:
+    oracle-jdk: 8
+build:
+  tools:
+    maven: 3.3.3
+  run:
+    workDir: msgp/msgp-task/
+    cmd:
+      - sh deploy/compile.sh
+  target:
+    distDir: msgp/msgp-task/target/
+    files:
+      - ./*.jar
+deploy:
+  targetDir: /opt/meituan/apps/msgp-task/
+  run:
+    workDir: /opt/meituan/apps/msgp-task/
+    cmd:
+      - java -jar *.jar

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="300">
+    <Properties>
+        <Property name="app.key">data-query</Property>
+        <Property name="appKey">com.sankuai.inf.data.query</Property>
+        <Property name="app.logdir">/opt/logs/mobile/${app.key}</Property>
+    </Properties>
+    <Appenders>
+
+        <XMDFile name="logFile" fileName="${app.key}.log"></XMDFile>
+
+        <XMDFile name="jmonitorappender" fileName="${app.key}.jmonitor.log"></XMDFile>
+
+        <Scribe name="ErrorScribeAppender">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <LcLayout/>
+        </Scribe>
+
+        <Async name="errorLog" blocking="true">
+            <AppenderRef ref="ErrorScribeAppender"/>
+        </Async>
+
+    </Appenders>
+
+    <Loggers>
+
+        <logger name="jmonitor" level="warn" includeLocation="true" additivity="false">
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+        <logger name="jmonitorlogstore" level="warn" includeLocation="true" additivity="false">
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+
+        <!--Application Logger-->
+        <logger name="com.sankuai" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="errorLog"/>
+        </logger>
+
+        <logger name="com.meituan" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="errorLog"/>
+        </logger>
+
+
+        <root level="warn" includeLocation="true">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="errorLog"/>
+        </root>
+
+    </Loggers>
+
+
+</Configuration>

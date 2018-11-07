@@ -1,0 +1,2 @@
+make
+cp Consumer ../../../integration-testing/script/consumer-cpp-client.exe

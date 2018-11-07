@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<servers>
+	<server>
+		<dbName>mobile_zk</dbName>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://mobile-atlas-service.vip.sankuai.com:6002/mobile_zk</url>
+		<username>mobile_zk_w</username>
+		<password>F8q26Tn~C|7Irt</password>
+		
+		<initialPoolSize>50</initialPoolSize>
+		<minPoolSize>50</minPoolSize>
+		<maxPoolSize>100</maxPoolSize>
+		<maxStatements>0</maxStatements>
+		<maxIdleTime>600</maxIdleTime>
+	</server>
+	<server>
+		<dbName>mobile_zk</dbName>
+		<isSlave>true</isSlave>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://mobile-atlas-service.vip.sankuai.com:6002/mobile_zk</url>
+		<username>mobile_zk_w</username>
+		<password>F8q26Tn~C|7Irt</password>
+		
+		<initialPoolSize>50</initialPoolSize>
+		<minPoolSize>50</minPoolSize>
+		<maxPoolSize>100</maxPoolSize>
+		<maxStatements>0</maxStatements>
+		<maxIdleTime>600</maxIdleTime>
+	</server>
+</servers>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sankuai.octo.msgp.dao.AppkeyDescDao">
+    <resultMap id="BaseResultMap" type="com.sankuai.octo.msgp.model.AppkeyDesc">
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="base" property="base" jdbcType="INTEGER"/>
+        <result column="appkey" property="appkey" jdbcType="VARCHAR"/>
+        <result column="baseApp" property="baseApp" jdbcType="VARCHAR"/>
+        <result column="owners" property="owt" jdbcType="VARCHAR"/>
+        <result column="observers" property="owt" jdbcType="VARCHAR"/>
+        <result column="pdl" property="pdl" jdbcType="VARCHAR"/>
+        <result column="owt" property="owt" jdbcType="VARCHAR"/>
+        <result column="intro" property="intro" jdbcType="VARCHAR"/>
+        <result column="tags" property="tags" jdbcType="VARCHAR"/>
+        <result column="business" property="business" jdbcType="INTEGER"/>
+        <result column="category" property="category" jdbcType="VARCHAR"/>
+        <result column="regLimit" property="regLimit" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getMtthriftService" resultMap="BaseResultMap">
+        select distinct owt, base, appkey from appkey_desc where category in ('thrift', 'thrift,http') and appkey in (select distinct appkey from appkey_provider)
+    </select>
+
+    <select id="getMnsService" resultMap="BaseResultMap">
+        select distinct owt, base, appkey from appkey_desc where appkey in (select distinct appkey from appkey_provider)
+    </select>
+
+    <select id="getAppkeyOwt" resultMap="BaseResultMap">
+        select distinct owt, base, appkey from appkey_desc
+    </select>
+
+    <select id="getSvcDegrageAppkeyOwt" resultMap="BaseResultMap">
+        select distinct owt, base, appkey from appkey_desc where appkey in (select distinct appkey from app_quota where env = 3)
+    </select>
+</mapper>

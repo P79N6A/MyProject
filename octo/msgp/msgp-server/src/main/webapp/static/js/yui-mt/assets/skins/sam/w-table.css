@@ -1,0 +1,31 @@
+#yui3-css-stamp.skin-sam-w-table { display:none }
+
+/* page navigator */
+.paginator { padding:10px 0 10px; white-space:nowrap; text-align:right; font-size:12px; }
+.paginator li { display:inline; margin:0 1px; *vertical-align:middle;}
+.paginator li.current { *height:24px; margin:0 6px; font-weight:bold; *line-height:24px;}
+.paginator li a { *display:inline-block; *height:22px; padding:2px; border:1px solid #bbb; text-decoration:none; *line-height:22px; *position:relative;}
+.paginator li a:hover { *height:24px; padding:2px;border:none; *line-height:24px; background:#00ADB2; color:#fff; text-decoration:none; }
+.paginator li a.nolink { color:#ccc; cursor:default;}
+.paginator li a.nolink:hover { background:transparent; *height:22px; border:1px solid #ccc; *line-height:22px;}
+.paginator .search { height:16px;width:30px; padding:0; margin:0; margin-right:5px; }
+.paginator .btn { font-size:14px; border:0; cursor:pointer; height:28px; margin-bottom:2px; background:url(../img/button.png) -126px 2px ; width:70px; letter-spacing: 5px; color:#000; }
+.paginator .btn:hover { background:url(../img/button.png) -126px -27px; width:70px; letter-spacing:5px; color:#000; }
+.widget-table-diagBtn { text-align:center; margin: 5px 0; }
+.widget-table-diagBtn .formbutton { margin: 0 5px; }
+.widget-table .widget-table-toolbar { margin: 0 0 3px 0; }
+.widget-table table th, .widget-table .sorttable-header-bg, .widget-table .sorttable-header-asc, .widget-table .sorttable-header-desc { background:none; background-color:#eee; }
+.widget-table th .fa { margin-left:5px; }
+
+/* font-awesome */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.eot?v=4.2.0');
+  src: url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.fa-sort:before { content: "\f0dc"; }
+.fa-sort-asc:before { content: "\f0dd"; }
+.fa-sort-desc:before { content: "\f0de"; }

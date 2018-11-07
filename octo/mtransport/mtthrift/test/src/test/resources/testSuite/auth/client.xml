@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="defaultSignHandler" class="com.meituan.service.mobile.mtthrift.auth.DefaultSignHandler" >
+        <property name="localAppkeyTokenMap" >
+            <map>
+                <entry key="com.sankuai.inf.mtthrift.testClient" value="123456" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="userDefinedSignHandler" class="com.meituan.service.mobile.mtthrift.auth.DefaultSignHandler" >
+        <property name="localAppkeyTokenMap" >
+            <map>
+                <entry key="com.sankuai.inf.mtthrift.testClient" value="123456" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="syncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="5000"/>
+        <property name="remoteServerPort" value="9004" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="asyncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="5000"/>
+        <property name="remoteServerPort" value="9004" />
+        <property name="async" value="true" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="unAuthedSyncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="5000"/>
+        <property name="remoteServerPort" value="9004" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="unAuthedAsyncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="5000"/>
+        <property name="remoteServerPort" value="9004" />
+        <property name="async" value="true" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="userDefinedSyncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9005" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="userDefinedAsyncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9005" />
+        <property name="async" value="true" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+
+    <bean id="annotationClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/>
+        <property name="remoteServerPort" value="9003" />
+        <property name="timeout" value="50000"/>
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="unAuthedAnnotationClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/>
+        <property name="remoteServerPort" value="9003" />
+        <property name="timeout" value="50000"/>
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="userDefinedAnnotationSyncClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9006" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+
+    <bean id="kmsAuthDataSource" class="com.meituan.service.inf.kms.client.KmsAuthDataSource">
+        <property name="appkey" value="com.sankuai.inf.mtthrift.testClient"/>
+    </bean>
+
+    <bean id="kmsSignHandler" class="com.meituan.service.mobile.mtthrift.auth.DefaultSignHandler">
+        <property name="authDataSource" ref="kmsAuthDataSource" />
+    </bean>
+
+    <bean id="kmsAuthClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9007" />
+        <property name="signHandler" ref="kmsSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="kmsDirectAuthClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="localServerPort" value="9007" />
+        <property name="signHandler" ref="kmsSignHandler" />
+    </bean>
+
+    <bean id="kmsAsyncAuthClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9007" />
+        <property name="async" value="true"/>
+        <property name="signHandler" ref="kmsSignHandler" />
+    </bean>
+
+    <bean id="asyncNettyIOClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="5000"/>
+        <property name="remoteServerPort" value="9004" />
+        <property name="async" value="true" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="asyncAnnotationNettyIOClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.annotationTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9006" />
+        <property name="async" value="true" />
+        <property name="signHandler" ref="defaultSignHandler" />
+        <property name="nettyIO" value="true" />
+    </bean>
+
+    <bean id="myAuthDataSource" class="com.sankuai.mtthrift.testSuite.auth.MyAuthDataSource"></bean>
+
+    <bean id="myAuthHandler" class="com.meituan.service.mobile.mtthrift.auth.DefaultSignHandler">
+        <property name="authDataSource" ref="myAuthDataSource"/>
+    </bean>
+
+    <bean id="myAuthDataSourceClientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="timeout" value="500000"/>
+        <property name="remoteServerPort" value="9008" />
+        <property name="signHandler" ref="myAuthHandler" />
+    </bean>
+
+</beans>

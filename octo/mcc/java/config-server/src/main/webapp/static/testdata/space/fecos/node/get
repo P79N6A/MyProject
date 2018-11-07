@@ -1,0 +1,20 @@
+{
+    "status": "success",
+    "data": {
+        "spaceName": "fecos",
+        "nodeName": "fecos",
+        "nodeData": {
+            "key": "value"
+        },
+        "nodeChildren": [
+            {
+                "name": "cms",
+                "isLeaf": true
+            },
+            {
+                "name": "poiop",
+                "isLeaf": false
+            }
+        ]
+    }
+}

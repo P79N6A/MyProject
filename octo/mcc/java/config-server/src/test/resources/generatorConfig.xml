@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!--connectionURL="jdbc:mysql://10.4.233.245:3306/config?autoReconnect:true;useUnicode:true" mccadmin mcc123-->
+<generatorConfiguration>
+    <!--<classPathEntry-->
+            <!--location="/Users/lhmily/.m2/repository/mysql/mysql-connector-java/5.1.15/mysql-connector-java-5.1.15.jar"/>-->
+    <context id="ormgenerator" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.20.116.73:5002/mcc?autoReconnect:true;useUnicode:true"
+                        userId="dbadmin"
+                        password="dbpasswd">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.sankuai.meituan.config.domain"
+                            targetProject="./src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.sankuai.meituan.config.mapper"
+                         targetProject="./src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sankuai.meituan.config.mapper"
+                             targetProject="./src/main/java/">
+            <property name="enableSubPackages" value="true"/>
+            <property name="exampleMethodVisibility" value="default"/>
+        </javaClientGenerator>
+
+        <table tableName="config_trash" domainObjectName="ConfigTrash">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <!--<table tableName="config_rollback" domainObjectName="ConfigRollback">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+        <!--<table tableName="pull_request" domainObjectName="PullRequest">-->
+        <!--<generatedKey column="pr_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="pull_request_detail" domainObjectName="PullRequestDetail">-->
+        <!--<generatedKey column="pr_detail_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="review" domainObjectName="Review">-->
+        <!--<generatedKey column="review_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="config_admin" domainObjectName="ConfigAdmin">-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="space_admin" domainObjectName="SpaceAdmin">-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="client_sync_log" domainObjectName="ClientSyncLog">-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="app">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+    </context>
+</generatorConfiguration>

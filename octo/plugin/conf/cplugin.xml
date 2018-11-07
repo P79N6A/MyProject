@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CPluginConf>
+    <!-- downloader host name -->
+    <HostOffLine>cplugin.inf.test.sankuai.com</HostOffLine>
+    <HostOnLine>cplugin.inf.vip.sankuai.com</HostOnLine>
+    <SentinelUpdateTime>1800</SentinelUpdateTime>
+    <ShortConn>0</ShortConn>
+    <SwitchForServer>1</SwitchForServer>
+    <DownloadFailedKeepTimes>1</DownloadFailedKeepTimes>
+    <DownloadFailedIntervalTime>60</DownloadFailedIntervalTime>
+    <OperatorTimeOut>5000000</OperatorTimeOut>
+    <AgentDebugMode>0</AgentDebugMode>
+</CPluginConf>

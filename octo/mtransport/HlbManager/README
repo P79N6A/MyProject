@@ -1,0 +1,17 @@
+相关说明
+HLB节点目前依赖到的第三方库
+
+-l event
+libevent-2.0.22-stable
+
+-l log4cplus
+log4cplus-1.1.3-rc4
+
+-l curl
+curl-7.42.1-2.el6.x86_64
+
+-l ctemplate
+ctemplate-2.3-1.x86_64
+
+-l jsoncpp
+jsoncpp.x86_64 0:0.6.0-0.8.rc2.el6

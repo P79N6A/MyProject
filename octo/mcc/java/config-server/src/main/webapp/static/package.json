@@ -1,0 +1,43 @@
+{
+  "name": "mtfe_cos_mtconfig",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "panel_synclog_template": "cat panel/synclog.micro | node_modules/.bin/template_compile --namespace mt.config.panel.synclog --name template --module config-panel/synclog-tpl > panel/synclog-tpl.js",
+    "build": "grunt build_site:mtconfig",
+    "deploy": "npm -r http://r.npm.sankuai.com i mtfe_cos_deploy@'>=0.3.0' && deploy",
+    "deploy_mtconfig_dev": "NODE_ENV=development cos_deploy"
+  },
+  "config": {
+    "registry": "http://r.npm.sankuai.com"
+  },
+  "deployStatic": {
+    "basePathAccordingToNODE_ENV": true,
+    "syncIncludes": [
+      "/node_modules/mtfe_cos-core",
+      "/node_modules/mtfe_fe.core",
+      "/node_modules/mtfe_cos-ui",
+      "/node_modules/mtfe_cos_track",
+      "/node_modules/mtfe_yui-config"
+    ]
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "mtfe_cos_deploy_cli": "^0.2.3",
+    "mtfe_template_compile": "~0.1.5"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "mtfe_build_site": "^0.3.5",
+    "mtfe_cos-core": "0.0.58",
+    "mtfe_cos-ui": "^1.2.13",
+    "mtfe_cos_config": "^0.1.3",
+    "mtfe_cos_mt-fe": "^1.6.3",
+    "mtfe_cos_track": "0.0.15",
+    "mtfe_fe.core": "^0.2.109",
+    "mtfe_yui-config": "^0.2.3"
+  }
+}

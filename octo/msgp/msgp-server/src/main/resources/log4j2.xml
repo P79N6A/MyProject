@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="300">
+    <Properties>
+        <Property name="app.key">msgp-server</Property>
+        <Property name="appKey">com.sankuai.inf.msgp</Property>
+        <Property name="app.logdir">/opt/logs/mobile/${app.key}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <Patternlayout pattern="%d{DEFAULT} [%t] %-5p (%C{1}:%L) - %m%n"/>
+        </Console>
+
+        <Scribe name="ScribeAppender">
+            <!-- 测试环境单独配置 scribeHost，线上配置 127.0.0.1，默认是 127.0.0.1 -->
+            <Property name="scribeHost">10.4.242.238</Property>
+            <!-- 配置 topic 名称 -->
+            <Property name="scribeCategory">octo_errorlog_logservice</Property>
+            <!-- 注意此处为 LcLayout -->
+            <LcLayout/>
+        </Scribe>
+
+        <XMDFile name="logFile" fileName="${app.key}.log"></XMDFile>
+        <!-- jmonitor -->
+        <XMDFile name="jmonitorappender" fileName="${app.key}.jmonitor.log"></XMDFile>
+    </Appenders>
+
+
+    <Loggers>
+        <logger name="com.sankuai.octo.msgp.svccover.dao" level="DEBUG" additivity="false">
+            <AppenderRef ref="console"/>
+        </logger>
+        <logger name="jmonitor" level="warn" includeLocation="true" additivity="false">
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+        <logger name="jmonitorlogstore" level="warn" includeLocation="true" additivity="false">    
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+
+        <logger name="ErrorLog" level="info" includeLocation="true" additivity="false">    
+            <AppenderRef ref="ScribeAppender"/>
+        </logger>
+
+        <!--<logger name="scala.slick.jdbc.JdbcBackend.statement" level="debug">-->
+            <!--<AppenderRef ref="console"/>-->
+        <!--</logger>-->
+
+        <!-- Root Logger -->
+        <root level="info" includeLocation="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="logFile"/>
+        </root>
+    </Loggers>
+
+
+</configuration>

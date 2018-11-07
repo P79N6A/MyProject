@@ -1,0 +1,1 @@
+oswatch means octo service watch. it is an application which provide auto-degrade the consumer QPS depends on configured quota.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean class="com.dianping.pigeon.remoting.provider.config.spring.ServiceBean"
+          init-method="init">
+        <property name="services">
+            <map>
+                <entry key="http://service.dianping.com/demoService/echoService_1.2.3"
+                       value-ref="echoServiceImpl"/>
+            </map>
+        </property>
+        <property name="port">
+            <value>5008</value>
+        </property>
+    </bean>
+
+    <bean id="echoServiceImpl" class="com.sankuai.octo.benchmark.service.EchoServiceImpl"/>
+
+</beans>

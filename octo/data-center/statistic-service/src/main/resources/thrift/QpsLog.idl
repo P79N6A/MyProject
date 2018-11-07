@@ -1,0 +1,10 @@
+namespace java com.sankuai.octo.log.statistic.model
+
+struct QpsLog {
+    1: required string providerAppKey;
+    2: required string spanName;
+    3: required string consumerAppKey;
+    4: required i32 unixTime;
+    5: required i32 type;
+    6: required i64 count;
+}

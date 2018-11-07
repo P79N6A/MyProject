@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--<mvc:annotation-driven/>-->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.sankuai.octo.export"/>
+
+    <mvc:annotation-driven/>
+
+    <bean id="serverPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.statistic.service.LogExportService"/>
+        <property name="serviceImpl" ref="logExportServiceImpl"/>
+        <!--可不配置，默认4-->
+        <property name="selectorThreads" value="10"/>
+        <!--可不配置，默认10-->
+        <property name="minWorkerThreads" value="24"/>
+        <property name="maxWorkerThreads" value="512"/>
+        <property name="port" value="8970"/>
+        <property name="appKey" value="com.sankuai.inf.data.export"/>
+    </bean>
+
+</beans>

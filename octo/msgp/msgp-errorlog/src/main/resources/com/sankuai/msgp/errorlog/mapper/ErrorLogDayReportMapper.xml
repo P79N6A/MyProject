@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sankuai.msgp.errorlog.dao.ErrorLogDayReportDao">
+
+    <resultMap id="BaseResultMap" type="com.sankuai.msgp.errorlog.pojo.ErrorLogDayReport">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="appkey" property="appkey" jdbcType="VARCHAR"/>
+        <result column="dt" property="dt" jdbcType="DATE"/>
+        <result column="log_count" property="logCount" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <resultMap id="DailyResultMap" type="com.sankuai.msgp.errorlog.pojo.ErrorLogDayReport">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="dt" property="dt" jdbcType="DATE"/>
+        <result column="total" property="logCount" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="CountResultMap" type="com.sankuai.msgp.errorlog.pojo.ErrorLogCount">
+        <result column="appkey" property="appkey" jdbcType="VARCHAR"/>
+        <result column="logCount" property="logCount" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="searchBy" resultMap="CountResultMap">
+        select appkey, sum(log_count) as logCount from error_log_day_report
+        <where>
+            1=1
+            <if test="dt !=null ">
+                and dt = #{dt}
+            </if>
+        </where>
+        group by appkey order by logCount desc;
+    </select>
+
+    <select id="searchDailyCount" resultMap="DailyResultMap">
+        select dt, sum(log_count) as total from error_log_day_report
+        <where>
+            1=1
+            <if test="dt !=null ">
+                and dt = #{dt}
+            </if>
+        </where>
+        group by dt order by dt desc limit #{days};
+    </select>
+
+    <insert id="genDailyReportData">
+        <![CDATA[
+        INSERT INTO error_log_day_report(appkey, dt, log_count)
+        SELECT appkey, #{date}, SUM(`count`) - SUM(`duplicate_count`) log_count FROM error_log_statistic WHERE TIME >= #{startSeconds} AND TIME < #{endSeconds} GROUP BY appkey
+        ]]>
+    </insert>
+
+    <select id="countOneDayData" resultType="java.lang.Integer">
+        SELECT count(*) FROM error_log_day_report WHERE dt = #{date, jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteOneDayData">
+        DELETE FROM error_log_day_report WHERE dt = #{date, jdbcType=VARCHAR}
+    </delete>
+
+    <select id="get3DaysAppkeyLogCount" resultMap="CountResultMap">
+        select appkey, sum(log_count) logCount from error_log_day_report where dt >= left(date_add(now(), interval -3 day), 10) group by appkey
+    </select>
+
+    <select id="get3DaysLogCountSum" resultType="java.lang.Integer">
+        select sum(log_count) from error_log_day_report where dt >= left(date_add(now(), interval -3 day), 10)
+    </select>
+</mapper>

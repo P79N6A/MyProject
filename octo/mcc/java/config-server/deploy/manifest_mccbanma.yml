@@ -1,0 +1,33 @@
+version: v1
+common:
+ tools:
+   oracle-jdk: 7 # 可选修改, 根据应用自己情况填写, 支持6/7/8
+ env:
+   APP_KEY: com.sankuai.inf.octo.mccbanma
+   WORK_PATH: /opt/meituan/apps/config-server
+build:
+ tools:
+   maven: 3.3.3 # 可选修改, 一般无需修改
+   node: 4.0.0
+ run:
+   workDir: config-server/     # 可选修改, workDir是代码仓库的相对目录, ./代表代码仓库的根目录
+   cmd:
+     - sh deploy/compile.sh
+ target:
+   distDir: config-server/target/ # distDir是代码仓库的相对目录
+   files:          # files中的文件描述是相对distDir的
+     - ./*.war
+     - ../deploy
+autodeploy:
+   targetDir: /opt/meituan/apps/config-server/        # 必须修改, mtgravity-gravityweb修改为自己的module名, 表示编译结果即build中的target的部署目录
+   env:
+   run: sh /opt/meituan/apps/config-server/deploy/run.sh       # 必须修改, mtgravity-gravityweb修改为自己的module名
+   check: sh /opt/meituan/apps/config-server/deploy/check.sh   # 必须修改, mtgravity-gravityweb修改为自己的module名
+   checkRetry: 60 # 默认值为1
+   checkInterval: 5s # 默认值1s
+deploy:
+   targetDir: /opt/meituan/apps/config-server/        # 必须修改, mtgravity-gravityweb修改为自己的module名, 表示编译结果即build中的target的部署目录
+   run:
+      workDir: /opt/meituan/apps/config-server/
+      cmd:
+         - sh /opt/meituan/apps/config-server/deploy/run.sh       # 必须修改, mtgravity-gravityweb修改为自己的module名

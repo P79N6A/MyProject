@@ -1,0 +1,15 @@
+namespace java com.sankuai.octo.logcollector.thrift.model
+
+struct DropRequest {
+    1: string appkey;
+    2: string host;
+    3: string remoteAppkey;
+    4: string spanname;
+    5: i64 start;
+    6: i64 count;
+    7: i32 type;
+}
+
+struct DropRequestList {
+    1: list<DropRequest> requests;
+}

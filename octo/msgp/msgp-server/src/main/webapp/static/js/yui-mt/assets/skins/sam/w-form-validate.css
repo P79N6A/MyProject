@@ -1,0 +1,22 @@
+#yui3-css-stamp.skin-sam-w-form-validate { display:none }
+/*w-validate*/
+.widget-validate-base .border-red {
+    border: 1px solid red;
+}
+.widget-validate-base .widget-validate-tip-info {
+    border: 1px solid #eed3d7;
+    background: #fcf2f2;
+    color: #b94a48;
+    padding: 5px;
+    line-height: 30px;
+    margin:0 5px;
+}
+.widget-validate-base .error-icon {
+    display: inline-block;
+    background: url("../img/validator-icons.png") no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-top;
+    margin-right: 2px;
+}
+/*test*/

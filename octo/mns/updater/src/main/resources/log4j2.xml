@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="300">
+    <Properties>
+        <Property name="app.key">updater</Property>
+        <Property name="appKey">com.sankuai.octo.scanner.updater</Property>
+        <Property name="app.logdir">/opt/logs/apps/${app.key}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <Patternlayout pattern="%d{DEFAULT} [%t] %-5p (%C{1}:%L) - %m%n"/>
+        </Console>
+
+        <RollingRandomAccessFile name="logFile" fileName="${app.logdir}/${app.key}.log"
+                                 immediateFlush="false"
+                                 filePattern="${app.logdir}/${app.key}.log.%d{yyyy-MM-dd}.gz">
+            <PatternLayout pattern="%d{DEFAULT} [%t] %-5p (%C{1}:%L) - %m%n" charset="UTF-8"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <!--<SizeBasedTriggeringPolicy size="100 MB"/>-->
+            </Policies>
+            <DefaultRolloverStrategy/>
+        </RollingRandomAccessFile>
+
+        <!-- jmonitor -->
+        <RollingRandomAccessFile name="jmonitorappender" fileName="${app.logdir}/${app.key}.jmonitor.log"
+                                 immediateFlush="false"
+                                 filePattern="${app.logdir}/${app.key}.jmonitor.log.%d{yyyy-MM-dd}.gz">
+            <PatternLayout pattern="%d{DEFAULT} [%t] %-5p (%C{1}:%L) - %m%n" charset="UTF-8"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <!--<SizeBasedTriggeringPolicy size="100 MB"/>-->
+            </Policies>
+            <DefaultRolloverStrategy/>
+        </RollingRandomAccessFile>
+
+        <!--用于mtrace的scribe Appender-->
+        <Scribe name="errorLog">
+
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+                
+            <Property name="hostname">${appKey}</Property>
+                
+            <Property name="scribeHost">10.4.232.70</Property>
+                
+            <Property name="scribePort">4252</Property>
+                
+            <Property name="scribeCategory">cos_errorlog</Property>
+                
+            <Property name="printExceptionStack">false</Property>
+                
+            <Property name="addStackTraceToMessage">false</Property>
+                
+            <Property name="timeToWaitBeforeRetry">6000</Property>
+                
+            <Property name="sizeOfInMemoryStoreForward">100</Property>
+                
+            <PatternLayout
+                    pattern="%d %p $${sys:app.host} $${sys:app.ip} errorlog appkey=${appKey} location=%F:%L rawlog=%replace{%m}{= \n|\t}{: &lt;br/&gt;} rawexception=%replace{%throwable}{= \n|\t}{: &lt;br/&gt;}%n"/>
+        </Scribe>
+
+    </Appenders>
+    <!--日志文件删除策略-->
+    <!--
+        <Delete baseDir="${app.logdir}">
+            <And>
+                <FileName pattern="${app.key}.log.%d{yyyy-MM-dd}.gz"/>
+                <LastModified age="7d"/>
+            </And>
+        </Delete>
+    -->
+
+    <Loggers>
+
+        <AsyncLogger name="jmonitor" level="warn" includeLocation="true" additivity="false">
+                
+            <AppenderRef ref="jmonitorappender"/>
+        </AsyncLogger>
+        <AsyncLogger name="jmonitorlogstore" level="warn" includeLocation="true" additivity="false">
+                 
+            <AppenderRef ref="jmonitorappender"/>
+        </AsyncLogger>
+
+        <!--Application Logger-->
+        <AsyncLogger name="com.sankuai" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="errorLog"/>
+        </AsyncLogger>
+
+        <AsyncLogger name="com.meituan" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="errorLog"/>
+        </AsyncLogger>
+
+        <!-- Root Logger -->
+        <AsyncRoot level="info" includeLocation="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="errorLog"/>
+        </AsyncRoot>
+
+    </Loggers>
+
+
+</Configuration>

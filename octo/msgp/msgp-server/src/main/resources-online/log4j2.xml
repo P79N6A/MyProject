@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="info" monitorInterval="300">
+    <Properties>
+        <Property name="app.key">msgp-server</Property>
+        <Property name="appKey">com.sankuai.inf.msgp</Property>
+        <Property name="app.logdir">/opt/logs/mobile/${app.key}</Property>
+    </Properties>
+    <appenders>
+
+        <XMDFile name="logFile" fileName="${app.key}.log" rolloverMax="50">
+
+        </XMDFile>
+        <!-- jmonitor -->
+        <XMDFile name="jmonitorappender" fileName="${app.key}.jmonitor.log"></XMDFile>
+
+        <Scribe name="ScribeAppender">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Property name="scribeCategory">octo_errorlog_logservice</Property>
+            <LcLayout/>
+        </Scribe>
+
+        <Async name="AsyncScribeAppender" blocking="true">
+            <AppenderRef ref="ScribeAppender"/>
+        </Async>
+
+        <Scribe name="ErrorScribeAppender">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <LcLayout/>
+        </Scribe>
+
+        <Async name="AsyncErrorScribeAppender" blocking="true">
+            <AppenderRef ref="ErrorScribeAppender"/>
+        </Async>
+
+    </appenders>
+
+    <Loggers>
+        <logger name="jmonitor" level="warn" includeLocation="true" additivity="false">
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+        <logger name="jmonitorlogstore" level="warn" includeLocation="true" additivity="false">
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+
+        <!--Application Logger-->
+        <logger name="com.sankuai" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="AsyncErrorScribeAppender"/>
+        </logger>
+
+        <logger name="com.meituan" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="AsyncErrorScribeAppender"/>
+        </logger>
+
+        <logger name="ErrorLog" level="info" includeLocation="true" additivity="false">    
+            <AppenderRef ref="AsyncScribeAppender"/>
+        </logger>
+
+        <!-- Root Logger -->
+        <root level="info" includeLocation="true">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="AsyncErrorScribeAppender"/>
+        </root>
+    </Loggers>
+</configuration>

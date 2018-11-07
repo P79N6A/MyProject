@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="com.sankuai.meituan"/>
+
+    <task:annotation-driven executor="executor" scheduler="scheduler"/>
+
+    <task:executor id="executor" pool-size="5"/>
+
+    <task:scheduler id="scheduler" pool-size="10"/>
+
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
+    <aop:config proxy-target-class="false"/>
+
+    <bean id="booter" class="com.sankuai.meituan.config.util.Bootstrap" init-method="init"/>
+
+    <bean id="upmAuthService" class="com.sankuai.meituan.upm.tools.UpmAuthService">
+        <!-- TODO 使用单独的appkey及secret -->
+        <property name="clientId" value="mtconfig"/>
+        <property name="secret" value="116cc0e3c8ebb585aaabfb7875036db8"/>
+    </bean>
+    <bean id="mtFilter" class="com.sankuai.meituan.filter.spring.FilterFactoryBean">
+        <property name="loginUrl" value="https://sso.sankuai.com"/>
+        <property name="cacheBodyData" value="true"/>
+        <property name="ignoreAcceptHeader" value="false"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /logout = logout
+                /api/** = anon
+                /config2/** = user
+                /** = user
+            </value>
+        </property>
+    </bean>
+
+    <bean id="authFilter" class="com.sankuai.meituan.config.interceptorfilter.AuthFilter"/>
+
+    <bean id="borpService" class="com.sankuai.meituan.borp.impl.BorpServiceImpl">
+        <constructor-arg index="0" value="mtconfig"/>
+        <constructor-arg index="1" value="116cc0e3c8ebb585aaabfb7875036db8"/>
+    </bean>
+
+    <bean id="thriftOperationRecordInterceptor"
+          class="com.sankuai.meituan.config.interceptorfilter.ThriftOperationRecordInterceptor"/>
+    <aop:config proxy-target-class="false">
+        <aop:aspect ref="thriftOperationRecordInterceptor">
+            <aop:around method="autoCreateOperation" pointcut="execution(public * com.sankuai.meituan.config.thrift.service.impl.*.*(..)) &amp;&amp; @annotation(operationRecord)"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="mnsInvokerBean" class="com.sankuai.inf.octo.mns.MnsInvoker"/>
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="mnsInvokerBean"/>
+        <property name="targetMethod">
+            <value>registerHttpService</value>
+        </property>
+        <property name="arguments">
+            <list>
+                <value>com.sankuai.cos.mtconfig</value>     <!-- 服务标识，在octo平台申请 -->
+                <value>8380</value>       <!-- 服务监听端口 -->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="defaultConfigSource" class="com.sankuai.meituan.service.http.conf.SimpleConfigSource">
+        <constructor-arg name="appkey" value="mtconfig"/>
+        <constructor-arg name="secret" value="116cc0e3c8ebb585aaabfb7875036db8"/>
+        <constructor-arg name="hostByProvider">
+            <map>
+                <entry key="mtorg" value="http://api.org-in.sankuai.com"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>

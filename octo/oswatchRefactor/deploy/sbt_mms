@@ -1,0 +1,232 @@
+#!/bin/bash
+
+function __help(){
+    echo "usage: sbt_mms commond module"
+    exit
+}
+if [[ $# < 2 ]]; then
+  __help
+fi
+
+CP=/bin/cp
+RM=/bin/rm
+RSYNC="rsync -rptog"
+TMP_PATH=/tmp
+JAVA=/usr/local/java/bin/java
+MMS_ROOT=/opt/meituan/apps
+LOG_ROOT=/opt/logs/apps
+MMS_PATH="/home/sankuai/bin/sbt_mms"
+
+COMMOND=$1
+PACKAGE=$2
+CLEANLOG_DATE="3"
+if [[ $# > 2 ]]; then
+  CLEANLOG_DATE=$3
+fi
+PRINT_STDOUT="false"
+if [[ $# > 3 ]]; then
+  PRINT_STDOUT=$4
+fi
+MODULE=`echo $2|awk -F'-release-' '{print $1}'`
+MMS_ROOT=$MMS_ROOT/$MODULE
+LOG_ROOT=$LOG_ROOT/$MODULE
+SRV_ROOT=/service/$MODULE
+
+function __mms_remote(){
+    $RSYNC $MMS_PATH $REMOTE:$MMS_PATH
+    ssh -tt $REMOTE "$MMS_PATH $COMMOND $PACKAGE $CLEANLOG_DATEE"
+}
+
+function __mms_local(){
+    case $COMMOND in
+        'init')
+            echo "init..."
+            __init
+            ;;
+        'start')
+            echo "start..."
+            __start
+            ;;
+        'run')
+            __run
+            ;;
+        'stop')
+            echo "stop..."
+            __stop
+            ;;
+        'restart')
+            echo "restart..."
+            __restart
+            ;;
+        'log')
+            echo "log..."
+            __log
+            ;;
+        'dump')
+            echo "dump..."
+            __dump
+            ;;
+        '*')
+            echo "未知命令..."
+            exit
+            ;;
+    esac
+}
+
+function __init(){
+    if [ ! -d "$LOG_ROOT" ];then
+        mkdir -p $LOG_ROOT
+    fi
+    if [ ! -d "$MMS_ROOT/packs" ];then
+        mkdir -p $MMS_ROOT/packs
+    fi
+    if [ ! -e "$SRV_ROOT" ];then
+        mkdir $SRV_ROOT
+        echo "#!/bin/bash" > $SRV_ROOT/run
+        if [ "true" == $PRINT_STDOUT ];then
+            echo "$MMS_PATH run $MODULE > $LOG_ROOT/stdInfo" >> $SRV_ROOT/run
+        else
+            echo "$MMS_PATH run $MODULE" >> $SRV_ROOT/run
+        fi
+        chmod +x $SRV_ROOT/run
+    fi
+    rm $SRV_ROOT/clean.sh
+    echo "#!/bin/bash" > $SRV_ROOT/clean.sh
+    echo "rootpath='$LOG_ROOT';" >> $SRV_ROOT/clean.sh
+    echo "find \$rootpath -mtime +1 -exec /bin/gzip {} \;" >> $SRV_ROOT/clean.sh
+    echo "find \$rootpath -mtime +$CLEANLOG_DATE -exec rm -fr {} \;" >> $SRV_ROOT/clean.sh
+    chmod +x $SRV_ROOT/clean.sh
+}
+
+function __start(){
+    echo 'use daemontool monitor service'
+    sudo svc -u $SRV_ROOT
+    sudo svstat $SRV_ROOT
+    cleanpath="$SRV_ROOT/clean.sh"
+    (crontab -l|grep -v $cleanpath ; echo "58 05 * * * /bin/bash $SRV_ROOT/clean.sh > /dev/null 2>&1" ) | crontab
+    k=1
+    for k in $(seq 1 20)
+    do
+        sleep 1
+        PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+        if [ "$PID" != "" ]; then
+            break
+        fi
+        echo $k
+        if [ $k -eq 20 ]
+        then
+            echo 'process start time more than 20s, so abort'
+            exit -1
+        fi
+    done
+    echo 'start successfully !!!'
+}
+
+function __run(){
+    EXEC="exec"
+    if [ "$UID" = "0" ]; then
+        EXEC="exec setuidgid sankuai"
+    fi
+
+    JVM_ARGS="-server -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8 -Djava.io.tmpdir=/tmp -Djava.net.preferIPv6Addresses=false"
+    #JVM_JIT="-XX:+AggressiveOpts -XX:CompileThreshold=1000 -XX:OnStackReplacePercentage=140 -XX:InterpreterProfilePercentage=33"
+    #JVM_DEBUG="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n"
+    #JVM_JMX="-Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=0.0.0.0"
+    JVM_GC="-XX:+DisableExplicitGC -XX:+PrintGCDetails -XX:+PrintHeapAtGC -XX:+PrintTenuringDistribution -XX:+UseConcMarkSweepGC -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps"
+    JVM_GC=$JVM_GC" -XX:CMSFullGCsBeforeCompaction=0 -XX:+UseCMSCompactAtFullCollection -XX:CMSInitiatingOccupancyFraction=80"
+    JVM_HEAP="-Xmn512m -XX:SurvivorRatio=8 -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=128m -XX:InitialCodeCacheSize=128m"
+    JVM_SIZE="-Xmx1g -Xms1g"
+
+    CONTEXT=/
+
+    EXEC_JAVA="$EXEC $JAVA $JVM_ARGS $JVM_SIZE $JVM_HEAP $JVM_JIT $JVM_GC"
+    EXEC_JAVA=$EXEC_JAVA" -Xloggc:$LOG_ROOT/$MODULE.gc.log -XX:ErrorFile=$LOG_ROOT/$MODULE.vmerr.log -XX:HeapDumpPath=$LOG_ROOT/$MODULE.heaperr.log"
+    if [ "$JVM_JMX" != "" ]; then
+        JVM_JMX_PORT=`expr $PORT '+' 10000`
+        EXEC_JAVA=$EXEC_JAVA" -Dcom.sun.management.jmxremote.port=$JVM_JMX_PORT $JVM_JMX"
+    fi
+
+    if [ "$JVM_DEBUG" != "" ]; then
+        JVM_DEBUG_PORT=`expr $PORT '+' 20000`
+        EXEC_JAVA=$EXEC_JAVA" $JVM_DEBUG,address=$JVM_DEBUG_PORT"
+    fi
+
+    EXEC_JAVA=$EXEC_JAVA" $JAVA_ARGS -jar $MMS_ROOT/$MODULE-assembly.jar"
+
+    if [ "$UID" = "0" ]; then
+        ulimit -n 1024000
+        umask 000
+    else
+        echo $EXEC_JAVA
+    fi
+
+    $EXEC_JAVA 1> $LOG_ROOT/text.log 2>&1
+}
+
+function __stop(){
+    echo 'begin __stop()!'
+    sudo svc -d /service/$MODULE
+    PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+    if [ "$PID" != "" ]; then
+    	kill $PID
+    	sleep 1
+    fi
+    PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+    if [ "$PID" != "" ]; then
+	sleep 3
+	PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+	if [ "$PID" != "" ]; then
+		sleep 8
+		PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+		if [ "$PID" != "" ]; then
+			sleep 30
+			PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+			if [ "$PID" != "" ]; then
+				echo 'cannot shutdown normally, so use kill -9'
+				kill -9 $PID
+			fi
+		fi
+	fi
+   fi
+}
+
+function __restart(){
+    echo 'begin __restart()!'
+    __stop
+    __start
+}
+function __log(){
+    tail -100f $LOG_ROOT/$MODULE.log.`date -d today "+%Y-%m-%d"`
+}
+function __dump(){
+   PID=`ps -ef | grep "$MODULE-assembly" | grep -v grep | awk '{print $2}'`
+   if [ "$PID" != "" ]; then
+                SUFIX=`date -d today "+%Y%m%d-%H%M%S"`
+                DUMP_PATH=$LOG_ROOT
+                HP_FILE=$MODULE.hprof.$SUFIX
+                ST_FILE=$MODULE.stack.$SUFIX
+
+                cd $DUMP_PATH
+
+                TAR_FILES="$HP_FILE $ST_FILE"
+                INFO_FILE=$MODULE.info.$SUFIX
+                AL_FILE=/opt/tmp/nagios/dumps.$MODULE
+                if [ -e "$AL_FILE" ]; then
+                    $CP -rf $AL_FILE $INFO_FILE
+                    TAR_FILES="$TAR_FILES $INFO_FILE"
+                fi
+                /usr/local/java/bin/jmap -dump:file=$HP_FILE,format=b,live $PID
+                /usr/local/java/bin/jstack $PID > $ST_FILE
+                tar -czvf $MODULE.dumps.$SUFIX.tar.gz $TAR_FILES
+                $RM -rf $TAR_FILES
+    fi
+}
+
+
+if [[ $# >4  ]]; then
+    REMOTE=$5
+    echo "REMOTE is $REMOTE"
+    __mms_remote
+else
+    __mms_local
+fi

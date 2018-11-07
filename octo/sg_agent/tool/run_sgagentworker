@@ -1,0 +1,15 @@
+#!/bin/sh
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/meituan/apps/sg_agent_worker/libs
+export LD_LIBRARY_PATH
+
+ulimit -n 1000000
+
+cd /opt/meituan/apps/sg_agent_worker
+
+#重启 sg_agent_worker
+NUM=`ps -ef |grep -v grep | grep -c /opt/meituan/apps/sg_agent_worker/sg_agent_worker`
+
+if [ $NUM -lt 1 ]
+then
+    exec setuidgid sankuai /opt/meituan/apps/sg_agent_worker/sg_agent_worker > /dev/null 2>&1
+fi

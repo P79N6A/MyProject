@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertyConfigurer" class="com.sankuai.meituan.config.util.BootInit">
+        <property name="locations">
+            <list>
+                <!--<value>classpath:database.properties</value>-->
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mtconfigService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.config.service.MtConfigService"/>
+        <property name="serviceImpl" ref="mtConfigServiceImpl"/>
+        <property name="selectorThreads" value="4"/>
+        <property name="minWorkerThreads" value="10"/>
+        <property name="maxWorkerThreads" value="256"/>
+        <property name="port" value="9001"/>
+        <property name="appKey" value="${app.key}"/>
+    </bean>
+
+    <bean id="sgNotify" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.sgnotify.service.SgNotify"/> <!-- service接口名 -->
+        <property name="timeout" value="120000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="${app.key}"/> <!-- 本地 appkey, OCTO 模式下需要申请, 配置 -->
+        <property name="remoteAppkey" value="com.sankuai.inf.sgnotify"/>  <!-- 目标 Server Appkey OCTO 模式下需要配置以获取服务列表-->
+    </bean>
+
+    <!-- sgnotify异步 -->
+    <bean id="asyncSgNotify" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.sgnotify.service.SgNotify"/> <!-- service接口名 -->
+        <property name="timeout" value="120000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.cos.mtconfig"/> <!-- 本地 appkey, OCTO 模式下需要申请, 配置 -->
+        <property name="remoteAppkey" value="com.sankuai.inf.sgnotify"/>  <!-- 目标 Server Appkey OCTO 模式下需要配置以获取服务列表-->
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="httpServerPublisher" class="com.sankuai.inf.octo.mns.hlb.HttpServerPublisher" init-method="publish"
+          destroy-method="destroy">
+        <property name="appKey" value="${app.key}"/>
+        <property name="port" value="8380"/>
+    </bean>
+</beans>

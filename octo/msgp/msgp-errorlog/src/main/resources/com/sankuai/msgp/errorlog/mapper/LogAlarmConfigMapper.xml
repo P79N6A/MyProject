@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sankuai.msgp.errorlog.dao.LogAlarmConfigDao">
+    <resultMap id="BaseResultMap" type="com.sankuai.msgp.errorlog.pojo.LogAlarmConfig">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="appkey" property="appkey" jdbcType="VARCHAR"/>
+        <result column="alarm_virtual_node" property="alarmVirtualNode" jdbcType="VARCHAR"/>
+        <result column="trapper" property="trapper" jdbcType="VARCHAR"/>
+        <result column="gap_seconds" property="gapSeconds" jdbcType="INTEGER"/>
+        <result column="enabled" property="enabled" jdbcType="BIT"/>
+        <result column="task_oper_type" property="taskOperType" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, appkey, alarm_virtual_node, trapper, gap_seconds, enabled
+    </sql>
+
+    <select id="search" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from log_alarm_config
+        <where>
+            1=1
+            <if test="appkey !=null">
+           and  appkey = #{appkey}
+            </if>
+            <if test="id !=null">
+                and  id &gt; #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getEnabledLogAlarm" resultMap="BaseResultMap">
+        select * from log_alarm_config where enabled = 1 and task_oper_type = 'no'
+    </select>
+
+    <select id="selectAlarmTaskToExecCfg" resultMap="BaseResultMap">
+        <![CDATA[
+        select * from log_alarm_config where task_oper_type <> 'NO'
+        ]]>
+    </select>
+
+    <update id="updateOperFinish">
+        update log_alarm_config set task_oper_type = 'NO' where appkey = #{appkey,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectAppkeyAlarmHost" resultMap="BaseResultMap">
+        select appkey, alarm_virtual_node from log_alarm_config
+    </select>
+
+    <update id="updateAlarmVirtualNode">
+        update log_alarm_config set alarm_virtual_node = #{octoAppkey} where appkey = #{errorlogAppkey}
+    </update>
+
+</mapper>

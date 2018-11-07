@@ -1,0 +1,15 @@
+<?xml version="2.0"?>
+
+<AgentPort>5266</AgentPort>
+
+<AgentHost>127.0.0.1</AgentHost>
+
+<ZkServer>10.4.245.3:2181</ZkServer>
+
+<Timeout>30000</Timeout>
+
+<Retry>5</Retry>
+
+<Appkey>com.sankuai.octo.tmy</Appkey>
+
+<BasicAppkey>com.sankuai.inf.basic</BasicAppkey>

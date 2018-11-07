@@ -1,0 +1,29 @@
+#yui-css-stamp.skin-sam-config-popup { display:none; }
+.yui3-panel-popup-prompt label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+.yui3-skin-cos.yui3-panel .yui3-panel-content {
+    -webkit-box-shadow: 2px 2px 10px #999;
+    -moz-box-shadow: 2px 2px 10px #999;
+    -ms-box-shadow: 2px 2px 10px #999;
+    box-shadow: 2px 2px 10px #999;
+    border-color: #aaa;
+}
+
+.yui3-skin-cos.yui3-panel .yui3-widget-hd {
+    background: #3fab99;
+    color: #fff;
+}
+
+.yui3-skin-cos.yui3-panel .yui3-widget-ft {
+    background: #f5f5f5;
+    border-top: 1px solid #ddd;
+}
+
+.yui3-skin-cos .btn-primary {
+    color: #fff;
+    background-color: #3fab99;
+}

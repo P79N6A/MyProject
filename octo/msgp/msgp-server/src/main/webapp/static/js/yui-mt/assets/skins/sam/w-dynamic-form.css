@@ -1,0 +1,25 @@
+#yui3-css-stamp.skin-sam-w-dynamic-form { display:none }
+.widget-dynamic-form table th  { width: 120px; text-align: right; padding-right: 10px; font-size: 14px; vertical-align: top; }
+.widget-dynamic-form table  label { margin-right: 10px; display:inline-block; }
+.widget-dynamic-form table  input { margin-right: 5px; }
+.widget-dynamic-form select { border: 1px solid #91b4d6; background-color:#fff; width: 150px; }
+.widget-dynamic-form .f-text, .widget-dynamic-form textarea { cursor:pointer; padding: 3px; width: 250px; }
+.widget-dynamic-form .f-text[disabled], .widget-dynamic-form textarea[disabled] { cursor: not-allowed;}
+.widget-dynamic-form textarea { height: 100px;  }
+.widget-dynamic-form .f-text { margin-bottom:0; }
+.widget-dynamic-form .f-text:active, .widget-dynamic-form .f-text:focus,
+.widget-dynamic-form textarea:active, .widget-dynamic-form textarea:focus { cursor:text; }
+.widget-dynamic-form .widget-dynamic-form-tips { color: #777; font-size: 12px; margin-top: 5px; }
+.widget-dynamic-form .widget-dynamic-form-required { color: red; font-size: 16px; }
+
+.widget-dynamic-form .widget-dynamic-form-tab { position: relative; margin-bottom: 10px; }
+.widget-dynamic-form .widget-dynamic-form-readonly { background-color:#eeeeee; cursor:not-allowed; }
+.widget-dynamic-form .widget-dynamic-form-headline { text-align:left; padding-left:10px; }
+
+/*common form*/
+.widget-dynamic-table { background: #fff; width: 100%; display: table; }
+.widget-dynamic-table tbody td,
+.widget-dynamic-table tbody th { padding:4px; border-bottom:1px solid #EFF0F0; vertical-align: top; word-break:break-all; word-wrap:break-word; }
+.widget-dynamic-table tbody th{ text-align:right; color:#777777; font-weight:normal; }
+.widget-dynamic-table tfoot td { padding:5px 0; text-align:center; }
+.widget-dynamic-table h1 { font-size:14px; font-weight:bold; padding:5px;width:200px; margin-bottom:2px;}

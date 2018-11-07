@@ -1,0 +1,6 @@
+<Plugins>
+    <Plugin>
+        <Name>cr_agent</Name>
+        <Version>1.3.3</Version>
+    </Plugin>
+</Plugins>

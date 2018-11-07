@@ -1,0 +1,29 @@
+version: v1
+common:
+  os: centos6
+  tools:
+    oracle-jdk: 8
+  env:
+    CURRENT_ENV: offline
+build: 
+  tools:
+    maven: 3.3.3
+  run:
+    workDir: msgp/log-monitor-frontend/
+    cmd: 
+      - sh deploy/compile.sh
+  target: 
+    distDir: msgp/log-monitor-frontend/target
+    files: 
+      - ./*.jar
+      - ../deploy
+deploy: 
+  targetDir: /opt/meituan/apps/log-monitor-frontend/
+  tools:
+  run:
+    workDir: /opt/meituan/apps/log-monitor-frontend/
+    cmd: 
+      - sh deploy/run.sh
+autodeploy:
+  targetDir: /opt/meituan/apps/log-monitor-frontend/
+  run: sh deploy/run.sh

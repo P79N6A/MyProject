@@ -1,0 +1,12 @@
+{
+    "status": "success",
+    "data": {
+        "spaceName": "fecos",
+        "nodeName": "fecos.cms.develop.lyc",
+        "nodeData": {
+            "key": "value"
+        },
+        "nodeChildren": [
+        ]
+    }
+}

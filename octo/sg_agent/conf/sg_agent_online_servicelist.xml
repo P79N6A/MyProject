@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SGAgentServiceList>
+    <!-- MtConfig-server主机与端口 -->
+    <MtConfigServerHost>
+    </MtConfigServerHost>
+</SGAgentServiceList>

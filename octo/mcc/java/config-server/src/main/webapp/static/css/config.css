@@ -1,0 +1,60 @@
+/* 覆盖 cos ui */
+#wrapper { min-height:500px; }
+.form-table table th { text-align:center; padding:10px 0; }
+.form-table table td { padding:15px 30px 15px 15px; }
+.form-table table td input,
+.form-table table td textarea { margin:0; width:100%; }
+.form-table table tr.form-actions td { padding:15px 30px; }
+.page-header .config-header-controller { margin:20px 0 0 20px; }
+
+.config-tree div { font-size:18px; word-break:break-all; }
+.config-tree li { margin:5px 0; }
+.config-tree-node { padding:5px 10px; cursor:pointer; clear:both; }
+.config-tree-node:hover { background:#eee; }
+.config-tree ul { list-style:none; margin-left:20px; }
+
+.config-tree-controller { display:none; margin-left:3px; color:#999; }
+.config-tree-node:hover .config-tree-controller { display:inline; }
+.config-tree-controller-update:hover { color:#058; }
+.config-tree-controller-add:hover { color:#094; }
+.config-tree-controller-delete:hover { color:#e22; }
+
+.config-tree-node-current { background:#faecd0; }
+
+.form-table td.config-panel-delete-td { text-align:center; padding-right:15px; vertical-align:middle; }
+.config-panel-delete { color:#999; }
+.config-panel-delete:hover { color:#e22; }
+
+.J-config-panel-item-deleted {
+    background: hsl(0, 86%, 70%);
+}
+.J-config-panel-item-deleted input,
+.J-config-panel-item-deleted textarea {
+    background: hsl(0, 86%, 86%);
+    border-color: hsl(0, 86%, 86%);
+}
+.J-config-panel-item-deleted .config-panel-delete,
+.J-config-panel-item-deleted .config-panel-delete:hover {
+    color: white;
+}
+
+.J-config-panel-item-modified {
+    background: hsl(34, 100%, 81%);
+}
+.J-config-panel-item-modified input,
+.J-config-panel-item-modified textarea {
+    background: hsl(34, 100%, 91%);
+    border-color: hsl(34, 100%, 91%);
+}
+
+.J-config-panel-item-added {
+    background: hsl(130, 50%, 70%);
+}
+.J-config-panel-item-added input,
+.J-config-panel-item-added textarea {
+    background: hsl(130, 50%, 86%);
+    border-color: hsl(130, 50%, 86%);
+}
+#J-config-header-h1{
+    width: 100%;
+}

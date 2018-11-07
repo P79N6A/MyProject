@@ -1,0 +1,20 @@
+#! /bin/bash
+
+source /etc/profile
+mkdir -p /var/sankuai/logs/plus_stdout/ && chown sankuai:sankuai /var/sankuai/logs/plus_stdout/
+
+export PLUS_STDOUT_PATH=/var/sankuai/logs/plus_stdout/hulk_start.log
+touch $PLUS_STDOUT_PATH
+chown sankuai:sankuai $PLUS_STDOUT_PATH
+cat /dev/null > $PLUS_STDOUT_PATH
+
+cd /opt/meituan/apps/sgnotify/    # TargetDir
+
+export CURRENT_ENV=online
+export HULK_DEFAULT_PROFILE=online
+
+# Stdout info
+setuidgid sankuai echo -e "\n--------------------------------"	>>	$PLUS_STDOUT_PATH
+setuidgid sankuai echo -e "StartTime: $(date)"	>>	$PLUS_STDOUT_PATH
+
+exec pgrphack setuidgid sankuai sh deploy/run.sh >> $PLUS_STDOUT_PATH  2>&1

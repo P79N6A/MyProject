@@ -1,0 +1,28 @@
+version: v1
+common:
+  tools:
+    oracle-jdk: 7
+  env:
+    CURRENT_ENV: offline
+build: 
+  tools:
+    maven: 3.3.3
+  run:
+    workDir: data-center/data-query/
+    cmd: 
+      - sh deploy/compile.sh
+  target: 
+    distDir: data-center/data-query/target/
+    files: 
+      - ./*.war
+      - ../deploy
+deploy: 
+  targetDir: /opt/meituan/mobile/data-query/
+  tools:
+  run:
+    workDir: /opt/meituan/mobile/data-query/
+    cmd: 
+      - sh deploy/run.sh
+autodeploy:
+  targetDir: /opt/meituan/mobile/data-query/
+  run: sh deploy/run.sh

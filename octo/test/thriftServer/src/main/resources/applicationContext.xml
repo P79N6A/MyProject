@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+    <context:annotation-config/>
+    <context:component-scan base-package="com.sankuai.octo"/>
+
+    <bean id="servicProcessor" class="com.sankuai.octo.test.thrift.service.impl.LogCollectorServiceImpl">
+    </bean>
+
+    <bean id="agentUrl" class="com.sankuai.octo.test.utils.ConfigHolder" factory-method="getAppkey"/>
+
+    <import resource="server1.xml"/>
+
+    <bean id="serverPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8600"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher1" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8601"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher2" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8602"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher3" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8603"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher4" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8604"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher5" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8605"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher6" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8606"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher7" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8607"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher8" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8608"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher9" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8609"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher10" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8610"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher11" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8611"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher12" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8612"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher13" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8613"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher14" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8614"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher15" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8615"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher16" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8616"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher17" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8617"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher18" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8618"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher19" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8619"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher20" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8620"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher21" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8621"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher22" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8622"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher23" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8623"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher24" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8624"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher25" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8625"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher26" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8626"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher27" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8627"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher28" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8628"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher29" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8629"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <bean id="serverPublisher30" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>
+        <property name="serviceImpl" ref="servicProcessor"/>
+        <!--可不配置，默认4-->
+        <!--<property name="selectorThreads" value="10"/>-->
+        <!--可不配置，默认10-->
+        <!--<property name="minWorkerThreads" value="100"/>-->
+        <property name="strAgentUrl" ref="agentUrl"/>
+        <property name="port" value="8630"/>
+        <property name="appKey" value="com.sankuai.inf.test"/>
+        <!--<property name="sgEnv" value="test"/>-->
+        <property name="clusterManager" value="OCTO"/>
+    </bean>
+
+    <!--<bean id="logCollectorThriftClient" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy"-->
+    <!--destroy-method="destroy">-->
+    <!--<property name="serviceInterface" value="com.sankuai.octo.test.thrift.service.LogCollectorService"/>-->
+    <!--&lt;!&ndash; service接口名 &ndash;&gt;-->
+    <!--<property name="clusterManager" value="OCTO"/>-->
+    <!--<property name="timeout" value="500"/>-->
+    <!--<property name="appKey" value="com.sankuai.inf.logCollector.client"/>-->
+    <!--&lt;!&ndash; thrift rpc 超时时间（毫秒） &ndash;&gt;-->
+    <!--<property name="remoteAppkey" value="com.sankuai.inf.logCollector"/>-->
+    <!--</bean>-->
+
+</beans>

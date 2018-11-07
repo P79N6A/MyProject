@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- thrift连接池配置 -->
+    <bean id="msgpMtConfigThriftPoolConfig" class="com.meituan.service.mobile.mtthrift.client.pool.MTThriftPoolConfig">
+        <property name="maxActive" value="128" />
+        <property name="maxIdle" value="32" />
+        <property name="minIdle" value="8" />
+        <property name="maxWait" value="3000" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+        <property name="testWhileIdle" value="true" />
+    </bean>
+
+    <bean id="MtConfigService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="msgpMtConfigThriftPoolConfig" /><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.octo.config.service.MtConfigService" /> <!-- service接口名 -->
+        <property name="appKey" value="com.sankuai.inf.msgp" /> <!-- 客户端appkey，如果同时也是server的话，建议复用 -->
+        <property name="remoteAppkey" value="com.sankuai.cos.mtconfig" />  <!-- 服务端appkey，由服务提供方提供 -->
+        <property name="timeout" value="3000" /> <!-- thrift rpc 超时时间（毫秒） -->
+    </bean>
+
+    <bean id="MNSCacheService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="msgpMtConfigThriftPoolConfig" /><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.octo.mnsc.idl.thrift.service.MNSCacheService" /> <!-- service接口名 -->
+        <property name="appKey" value="com.sankuai.inf.msgp" /> <!-- 客户端appkey，如果同时也是server的话，建议复用 -->
+        <property name="remoteAppkey" value="com.sankuai.inf.mnsc" />  <!-- 服务端appkey，由服务提供方提供 -->
+        <property name="timeout" value="3000" /> <!-- thrift rpc 超时时间（毫秒） -->
+    </bean>
+
+    <bean id="notifyService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy">
+        <property name="mtThriftPoolConfig" ref="msgpMtConfigThriftPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.meituan.notify.thrift.service.NotifyService"/> <!-- service接口名 -->
+        <property name="timeout" value="5000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="clusterManager" value="OCTO"/> <!-- 集群工作模式 OCTO -->
+        <property name="appKey" value="com.sankuai.inf.msgp"/> <!-- 本地 appkey, OCTO 模式下需要申请, 配置 -->
+        <property name="remoteAppkey" value="com.sankuai.cos.notify"/>  <!-- 目标 Server Appkey OCTO 模式下需要配置以获取服务列表-->
+        <!-- 以下配置一般不用修改, 使用默认值即可 -->
+        <property name="retryRequest" value="true"/> <!-- 请求失败后是否重试, 默认为 true -->
+        <property name="enableRemoteDCServer" value="true"/> <!-- 访问远程机房服务的开关, 默认为 true -->
+    </bean>
+
+    <bean id="portraitService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="msgpMtConfigThriftPoolConfig" /><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.inf.hulk.portrait.thrift.service.PortraitService" /> <!-- service接口名 -->
+        <property name="appKey" value="com.sankuai.inf.msgp" /> <!-- 客户端appkey，如果同时也是server的话，建议复用 -->
+        <property name="remoteAppkey" value="com.sankuai.inf.hulk.porserver" />  <!-- 服务端appkey，由服务提供方提供 -->
+        <property name="timeout" value="3000" /> <!-- thrift rpc 超时时间（毫秒） -->
+    </bean>
+
+    <bean id="portraitClient" class="com.sankuai.octo.msgp.utils.client.PortraitClient">
+        <property name="clientProxy" ref="portraitService"/>
+    </bean>
+
+
+    <bean id="mtConfigService" class="com.sankuai.octo.msgp.serivce.mcc.MtConfigService">
+        <property name="clientProxy" ref="MtConfigService"/>
+    </bean>
+
+    <bean id="mnsCacheClient" class="com.sankuai.octo.msgp.utils.client.MnsCacheClient">
+        <property name="clientProxy" ref="MNSCacheService"/>
+    </bean>
+</beans>

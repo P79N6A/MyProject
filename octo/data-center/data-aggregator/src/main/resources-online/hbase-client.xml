@@ -1,0 +1,52 @@
+<configuration>
+    <property>
+        <name>hbase.client.hottable</name>
+        <value>mtrace.traces, mtrace.idxServiceName, mtrace.idxServiceSpanName</value>
+    </property>
+    <property>
+        <name>hbase.client.read.threads.max</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>hbase.client.write.threads.max</name>
+        <value>64</value>
+    </property>
+    <!--增加会话超时-->
+    <property>
+        <name>zookeeper.session.timeout</name>
+        <value>300000</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.property.tickTime</name>
+        <value>6000</value>
+    </property>
+    <property>
+        <name>hbase.client.acquirehtable.maxtime</name>
+        <value>5000</value>
+    </property>
+    <property>
+        <name>hbase.rpc.timeout</name>
+        <value>5000</value>
+    </property>
+    <property>
+        <name>hbase.client.meta.operation.timeout</name>
+        <value>6000</value>
+    </property>
+    <property>
+        <name>hbase.client.read.timeout</name>
+        <value>5000</value>
+    </property>
+    <property>
+        <name>hbase.client.operation.timeout</name>
+        <value>5000</value>
+    </property>
+    <!-- 认证 -->
+    <property>
+        <name>hbase.app.keytab.file</name>
+        <value>/opt/meituan/mobile/data-aggregator/webroot/WEB-INF/classes/octo.keytab</value>
+    </property>
+    <property>
+        <name>hbase.app.kerberos.principal</name>
+        <value>hbase-default/octo@SANKUAI.COM</value>
+    </property>
+</configuration>

@@ -1,0 +1,2 @@
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../../dependencies/librdkafka/src/:../../:../../dependencies/cthrift/cthrift_v2_build/lib
+./Consumer namespace=pingtai topic=intelligent_scene.order.search_datacenter appkey=test_yzq group=test_group12 filename=data_consumer.txt

@@ -1,0 +1,83 @@
+#include <string>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "Producer.h"
+#include "Log.h"
+#include "TimeUtil.h"
+#include "StringConverter.h"
+
+using namespace mafka;
+using namespace std;
+
+long long count = 0;
+long long complete_count = 0;
+mafka::timestamp_t async_start;
+
+class TestHandler : public CompletionHandler
+{
+public:
+	virtual void OnComplete(int error_code)
+	{
+		if(error_code)
+		{
+			INFO("send complete error_code=%d\n", error_code);
+		}
+		++complete_count;
+/*
+		if(complete_count >= count)
+		{
+			mafka::timestamp_t async_end = TimeUtil::TimeNow();
+			INFO("send complete timecost=%llu, qps=%f\n", async_end-async_start, count/((async_end-async_start)/1000.0));
+
+			complete_count = 0;
+			count = 0;
+		}
+*/
+	}
+};
+TestHandler handler;
+
+int main(int argc, char* argv[])
+{
+	const int PRODUCER_COUNT = atoi(argv[1]);
+	ProducerPtr producer[PRODUCER_COUNT];
+	for(int i = 0; i < PRODUCER_COUNT; ++i)
+	{
+		producer[i] = NewProducer("test_appkey", "test_cpp_broker_performance");
+		if(!producer[i])
+		{
+			ERROR("producer startup failed, i = %d\n");
+			return 0;
+		}
+		
+		{
+			//mafka::timestamp_t start = TimeUtil::TimeNow();
+			//async_start = start;
+			for(int j = 0; j < 10; ++j)
+			{
+				std::string str456("world456 async message:");
+				str456 += StringConverter::Int64ToString(TimeUtil::TimeNow());
+				int ret = producer[i]->SendAsync(str456.c_str(), str456.length(), handler);
+				++count;
+				if(ret)
+				{
+					ERROR("send failed, ret=%d, count=%d\n", ret, count);
+				}
+			}
+			//mafka::timestamp_t end = TimeUtil::TimeNow();
+			//INFO("send async timecost=%llu, qps=%f\n", end-start, count/((end-start)/1000.0));
+		}
+
+	}
+
+	while(complete_count < count)
+	{
+		INFO("complete_count=%d, count=%d\n", complete_count, count);
+		sleep(5);
+	}
+
+	INFO("shutdown\n");
+
+	return EXIT_SUCCESS;
+}

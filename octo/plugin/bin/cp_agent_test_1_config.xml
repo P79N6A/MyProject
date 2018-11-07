@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Process>
+    <Preload>
+    </Preload>
+    <Host>
+        <Module Name="cr_agent" LibraryName="/opt/meituan/apps/cr_agent/libcragent.so.1.4.4" Hash="80b1b4d7b287b6b049f3f0ff5e63dd4c" />
+    </Host>
+    <Plugin>
+    </Plugin>
+    <Config>
+        <File LinkName="/opt/meituan/apps/cr_agent/crane_agent.xml" ConfigName="/opt/meituan/apps/cr_agent/crane_agent.xml.default.1.4.4" Hash="80b1b4d7b287b6b049f3f0ff5e63dd4c" HotUpdate="0"/>
+        <File LinkName="/opt/meituan/apps/cr_agent/log4cplus.conf" ConfigName="/opt/meituan/apps/cr_agent/log4cplus.conf.default.1.4.4" Hash="80b1b4d7b287b6b049f3f0ff5e63dd4c" HotUpdate="0"/>
+    </Config>
+</Process>

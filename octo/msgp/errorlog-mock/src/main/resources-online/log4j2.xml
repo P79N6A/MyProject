@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="300">
+    <Properties>
+        <Property name="app.key">error-mock</Property>
+        <Property name="appKey">com.sankuai.inf.octo.errorlog.mock</Property>
+        <Property name="app.logdir">/opt/logs/mobile/${app.key}</Property>
+    </Properties>
+    <appenders>
+
+        <XMDFile name="logFile" fileName="${app.key}.log"></XMDFile>
+
+        <Scribe name="ErrorScribeAppender">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <LcLayout/>
+        </Scribe>
+
+        <Async name="AsyncErrorScribeAppender" blocking="true">
+            <AppenderRef ref="ErrorScribeAppender"/>
+        </Async>
+
+    </appenders>
+
+    <Loggers>
+        <!--Application Logger-->
+        <logger name="com.sankuai" level="info" includeLocation="true" additivity="false">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="AsyncErrorScribeAppender"/>
+        </logger>
+
+        <!-- Root Logger -->
+        <root level="info" includeLocation="true">
+            <AppenderRef ref="logFile"/>
+            <AppenderRef ref="AsyncErrorScribeAppender"/>
+        </root>
+
+    </Loggers>
+</Configuration>

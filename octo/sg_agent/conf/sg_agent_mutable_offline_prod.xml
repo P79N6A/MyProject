@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SGAgentMutableConf>
+    <!-- sg_agent appkey -->
+    <SGAgentAppKey>com.sankuai.inf.sg_agent</SGAgentAppKey>
+    <!-- sg_agent版本号 -->
+    <SGAgentVersion>sg_agent-v3.1.7</SGAgentVersion>
+    <!-- sg_agent端口 -->
+    <ClientPort>5266</ClientPort>
+    <!-- MNS路径 -->
+    <DefaultMnsPath>/mns/sankuai/prod</DefaultMnsPath>
+    <!-- MNS主机与端口 -->
+    <MnsHost>
+        <beijing>10.20.112.130:2181,10.20.112.174:2181,10.20.127.40:2181,10.21.129.222:2181,10.20.127.67:2181,10.20.127.30:2181,10.21.129.221:2181</beijing>
+        <shanghai>10.72.238.244:2181,10.72.238.238:2181,10.72.238.241:2181,10.72.238.240:2181,10.72.238.242:2181,10.72.238.237:2181,10.72.238.243:2181,10.72.238.239:2181</shanghai>
+    </MnsHost>
+    <!-- MNS连接超时 -->
+    <Timeout>30000</Timeout>
+    <!-- MNS连接重试次数 -->
+    <Retry>3</Retry>
+    <!-- 后端logCollector appkey -->
+    <RemoteLogAppkey>com.sankuai.inf.logCollector</RemoteLogAppkey>
+    <!-- mtconfig-server appkey -->
+    <MtConfigServerAppkey>com.sankuai.cos.mtconfig</MtConfigServerAppkey>
+    <!-- MNSCache appkey -->
+    <MNSCacheAppkey>com.sankuai.inf.mnsc</MNSCacheAppkey>
+    <!-- KVConfig Default path -->
+    <KVConfigPath>/opt/meituan/apps/mcc/mcckv</KVConfigPath>
+    <!-- KVConfig Default file -->
+    <KVConfigFile>mcc.conf</KVConfigFile>
+    <!-- FileConfig Default path -->
+    <FileConfigPath>/opt/meituan/apps/mcc/</FileConfigPath>
+    <!-- sg_agent功能开关 -->
+    <SGAgentFun>
+        <!-- 是否打开getLocalConfig接口 -->
+        <OpenConfig>close</OpenConfig>
+        <!-- 是否打开getConfig接口 -->
+        <OpenMtConfig>open</OpenMtConfig>
+        <!-- 是否打开sendLog接口 -->
+        <OpenLog>open</OpenLog>
+        <!-- 是否打开commonLog接口 -->
+        <OpenCommonLog>open</OpenCommonLog>
+        <!-- 是否打开sendInvoke接口 -->
+        <OpenModuleInvoke>open</OpenModuleInvoke>
+        <!-- 是否打开Quota接口 -->
+        <OpenQuota>open</OpenQuota>
+        <!-- 是否打开selfCheck接口 -->
+        <OpenSelfCheck>open</OpenSelfCheck>
+        <!-- 是否打开MNSCache开关 -->
+        <OpenMNSCache>open</OpenMNSCache>
+        <!-- 是否打开getFileConfig接口 -->
+        <OpenFileConfig>open</OpenFileConfig>
+        <!-- 是否打开getHlb接口 -->
+        <OpenHlb>open</OpenHlb>
+        <!-- 是否打开服务访问控制接口接口 -->
+        <OpenAuth>open</OpenAuth>
+        <!-- 是否打开Http健康检查的接口-->
+        <OpenProperties>open</OpenProperties>
+        <!-- 是否打开环境切换接口 -->
+	    <OpenSwitchEnv>close</OpenSwitchEnv>
+        <!-- 是否打开Mafka接口 -->
+	    <OpenMafka>open</OpenMafka>
+        <!-- 是否打开环境切换到stage接口 -->
+	    <OpenAutoSwitchStage>close</OpenAutoSwitchStage>
+        <!-- 是否打开环境切换到test接口 -->
+	    <OpenAutoSwitchTest>close</OpenAutoSwitchTest>
+        <!-- 是否打开动态自动归组 -->
+	    <OpenAutoRoute>open</OpenAutoRoute>
+        <!-- 是否打开localAppkey协议回退开关 -->
+	    <OpenUnifiedProtoChange4LocalAppkey>open</OpenUnifiedProtoChange4LocalAppkey>
+        <!-- 是否打开协议回退开关 -->
+	    <OpenUnifiedProtoChange4MTthrift>close</OpenUnifiedProtoChange4MTthrift>
+    </SGAgentFun>
+    <AllEnvWhiteLists>
+        <Item>com.sankuai.inf.mafka.castle</Item>
+        <Item>com.sankuai.cellar.config</Item>
+    </AllEnvWhiteLists>
+    <FileConfigAllEnvWhiteLists>
+        <!-- 只获取prod或者dev环境的文件配置的appkey列表 -->
+        <Item>com.sankuai.tair.</Item>
+    </FileConfigAllEnvWhiteLists>
+    <NoWatcherWhiteLists>
+        <Item>com.sankuai.inf.logCollector</Item>
+        <Item>com.sankuai.cos.mtconfig</Item>
+        <Item>com.sankuai.inf.mnsc</Item>
+    </NoWatcherWhiteLists>
+    <RegisteUnlimitWhiteList>
+        <Item>com.sankuai.inf.sg_agent</Item>
+        <Item>com.sankuai.inf.kms_agent</Item>
+    </RegisteUnlimitWhiteList>
+</SGAgentMutableConf>

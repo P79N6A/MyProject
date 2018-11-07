@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sankuai.msgp.errorlog.dao.CellServiceDao">
+    <resultMap id="Appkeys" type="java.lang.String">
+    </resultMap>
+
+    <insert id="updateCellService">
+        insert ignore cell_service(appkey) select distinct appkey from error_log_statistic where time > #{time, jdbcType=INTEGER} and host_set != 'default_cell';
+    </insert>
+
+    <select id="getCellServices" resultMap="Appkeys">
+        select appkey from cell_service
+    </select>
+</mapper>

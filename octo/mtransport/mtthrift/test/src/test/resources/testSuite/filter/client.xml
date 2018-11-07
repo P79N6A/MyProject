@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="clientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testClient"/>
+        <property name="remoteAppkey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/>
+        <property name="serverIpPorts" value="localhost:9009"/>
+        <property name="timeout" value="5000"/>
+        <property name="filters">
+            <list>
+                <bean class="com.sankuai.mtthrift.testSuite.filter.TraceFilter" />
+                <bean class="com.sankuai.mtthrift.testSuite.filter.AccessLogFilter" />
+                <bean class="com.sankuai.mtthrift.testSuite.filter.ClientQpsLimitFilter" />
+                <bean class="com.sankuai.mtthrift.testSuite.filter.InvokerFilter" />
+                <bean class="com.sankuai.mtthrift.testSuite.filter.CustomFilter1" />
+                <bean class="com.sankuai.mtthrift.testSuite.filter.CustomFilter2" />
+            </list>
+        </property>
+    </bean>
+</beans>

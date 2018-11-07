@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 外卖服务化客户端连接池的通用配置 -->
+    <bean id="wmThriftClientConnPoolConfig" class="com.meituan.service.mobile.mtthrift.client.pool.MTThriftPoolConfig">
+        <property name="maxActive" value="40"/>
+        <property name="maxIdle" value="8"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxWait" value="3000"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="false"/>
+    </bean>
+
+    <bean id="wmOrgCityThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8483"/>
+    </bean>
+
+    <bean id="wmContactPointThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8484"/>
+    </bean>
+
+    <bean id="wmAorThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8485"/>
+    </bean>
+
+    <bean id="wmEmployThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8486"/>
+    </bean>
+
+    <bean id="wmDistrictThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8489"/>
+    </bean>
+
+    <bean id="wmBigDistrictThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8492"/>
+    </bean>
+
+    <bean id="wmOpenCityThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8490"/>
+    </bean>
+
+    <bean id="wmBuildingThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8491"/>
+    </bean>
+
+    <bean id="wmCtrlAreaThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8493"/>
+    </bean>
+
+    <bean id="wmBizPointThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8494"/>
+    </bean>
+
+    <bean id="wmCityEntrancePageThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8495"/>
+    </bean>
+
+    <bean id="wmVirtualOrgThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8496"/>
+    </bean>
+
+    <bean id="operationThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8498"/>
+    </bean>
+
+    <bean id="wmOrgThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8497"/>
+    </bean>
+
+    <bean id="wmUserOperationRecordService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy"><property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="100"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.infra"/>
+        <property name="remoteServerPort" value="8499"/>
+    </bean>
+
+    <bean id="wmContractThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="6000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8470"/>
+        <!--<property name="async" value="true"/>-->
+    </bean>
+
+    <bean id="wmContractAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8470"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmQuaThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="6000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8471"/>
+    </bean>
+
+    <bean id="wmAgentContractThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8472"/>
+    </bean>
+
+    <bean id="wmContractPoiThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8473"/>
+    </bean>
+
+    <bean id="wmContractPoiAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8473"/>
+        <property name="async" value="true" />
+    </bean>
+
+    <bean id="wmContractPoiAuditedThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8474"/>
+    </bean>
+
+    <bean id="wmContractPoiAuditedAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.mtthrift.testSuite.idl.TestService"/>
+        <property name="remoteAppkey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteServerPort" value="8474"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmSettleThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8475"/>
+    </bean>
+
+    <bean id="wmSettleAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8475"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmSettleAuditedThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8476"/>
+    </bean>
+
+    <bean id="wmSettleAuditedAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8476"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmContractAuditedThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8477"/>
+    </bean>
+
+    <bean id="wmContractAuditedAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8477"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmPoiSettleThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8478"/>
+    </bean>
+
+    <bean id="wmPoiSettleAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8478"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmPoiSettleAuditedThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8479"/>
+    </bean>
+
+    <bean id="wmPoiSettleAuditedAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8479"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmContractLogThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8480"/>
+    </bean>
+
+    <bean id="wmContractLogAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8480"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmContractVersionThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8481"/>
+    </bean>
+
+    <bean id="wmContractSignerThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8482"/>
+    </bean>
+
+    <bean id="wmContractSignerAuditedThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8483"/>
+    </bean>
+
+    <bean id="wmContractVersionDealThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8484"/>
+    </bean>
+
+    <bean id="wmUnviewRecordThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8485"/>
+    </bean>
+
+    <bean id="wmContractPlatformfeeDiscountThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8486"/>
+    </bean>
+
+    <bean id="wmContractQualificationThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8487"/>
+    </bean>
+
+    <bean id="wmContractQualificationAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8487"/>
+        <property name="async" value="true"/>
+    </bean>
+
+    <bean id="wmContractQualificationAuditedThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8488"/>
+    </bean>
+
+    <bean id="wmContractQualificationAuditedAsyncThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.contract"/>
+        <property name="remoteServerPort" value="8488"/>
+        <property name="async" value="true" />
+    </bean>
+    <bean id="wmPoiPaybillService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="50000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8480"/>
+        <!--<property name="maxResponseMessageBytes" value="104857699"/>-->
+    </bean>
+
+    <bean id="wmPoiPaybillExecutionContextService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8481"/>
+    </bean>
+
+    <bean id="wmPoiPayTaskService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8482"/>
+    </bean>
+
+    <bean id="wmOrderSettleExtraService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8483"/>
+    </bean>
+
+    <bean id="wmAccountManagerService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8484"/>
+    </bean>
+
+    <bean id="wmPartnerSettleBillService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8486"/>
+    </bean>
+
+    <bean id="wmPoiTakebackService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8487"/>
+    </bean>
+
+    <bean id="wmPoiPaySelfService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8488"/>
+    </bean>
+
+    <bean id="wmPaymentRecordService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8489"/>
+    </bean>
+
+    <bean id="wmMoneyDelayFireService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8490"/>
+    </bean>
+
+    <bean id="wmSettleCardPayTaskService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8492"/>
+    </bean>
+
+    <bean id="wmSettleCardService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="15000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8493"/>
+    </bean>
+
+    <bean id="wmPoiSettleCardService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8494"/>
+    </bean>
+
+    <bean id="wmPoiGroupSettleCardService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8495"/>
+    </bean>
+
+    <bean id="wmSettleCardExecutionContextService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8496"/>
+    </bean>
+
+    <bean id="wmOrderPoiFoodShareService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8580"/>
+    </bean>
+
+    <bean id="wmPoiLogisticsFoodShareThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8581"/>
+    </bean>
+
+    <bean id="wmPoiLogisticsShareThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8582"/>
+    </bean>
+
+    <bean id="wmSettlePoolService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8584"/>
+    </bean>
+
+    <bean id="mtPaymentThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8583"/>
+    </bean>
+
+    <bean id="wmPoiPaySettingThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8587"/>
+    </bean>
+
+
+    <bean id="wmSettleContractSyncService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="60000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8588"/>
+    </bean>
+    <bean id="wmPoiShareService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8586"/>
+
+    </bean>
+
+    <bean id="wmActOrderChargeService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8590"/>
+    </bean>
+
+    <bean id="wmSettleService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8589"/>
+    </bean>
+
+    <bean id="wmSettleFlowService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8591"/>
+    </bean>
+
+    <bean id="wmAccountWithDrawService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8592"/>
+    </bean>
+
+    <bean id="wmSettle2AccountHisService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8593"/>
+    </bean>
+
+    <!-- 结算中心对账service（以后的对账尽量放到这里来）-->
+    <bean id="wmSettleCheckService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8594"/>
+    </bean>
+
+    <!--百胜用第三方门店服务化接口 -->
+    <bean id="wmThirdPoiSettlementService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8596"/>
+    </bean>
+
+    <!-- 商超结算服务-->
+    <bean id="wmSupermarketsSettleService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8597"/>
+    </bean>
+
+    <!-- 充值保证金接口-->
+    <bean id="wmDepositService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8598"/>
+    </bean>
+
+    <!-- 打款失败发大象提醒bd、bdm -->
+    <bean id="wmAccountWithdrawRecordFailedQueueService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8599"/>
+    </bean>
+
+    <bean id="wmCrowdSourcingDepositDebitService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8600"/>
+    </bean>
+
+    <bean id="wmCrowdSourcingDebitService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="300"/> <!-- thrift rpc 超时时间（毫秒）给配送用的，设的小点 -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8601"/>
+    </bean>
+
+    <bean id="wmMoneyMonitorService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8497"/>
+    </bean>
+
+    <bean id="wmContractSettlePoiService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8605"/>
+    </bean>
+
+    <bean id="wmBillPeriodService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8602"/>
+        <property name="maxResponseMessageBytes" value="163840000"/>
+    </bean>
+
+    <!-- 充值保证金接口-->
+    <bean id="wmContractSettleSettingService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8603"/>
+    </bean>
+
+    <!-- 合并入账/退款 -->
+    <bean id="wmPoiTransferAccountService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8604"/>
+    </bean>
+
+    <!-- 账单拓展信息 -->
+    <bean id="wmSettleBillExtraService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8607"/>
+    </bean>
+
+    <bean id="wmAdDepositService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="10000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8606"/>
+    </bean>
+
+    <!-- 餐损 -->
+    <bean id="wmMealLossService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8609"/>
+    </bean>
+
+    <bean id="wmSettleQueryForBusinessService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="500"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8608"/>
+    </bean>
+
+    <bean id="wmAdjustmentService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8610"/>
+    </bean>
+
+    <bean id="WmAdCpcDepositService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8614"/>
+    </bean>
+
+    <bean id="wmActOrderSwitchService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8611"/>
+    </bean>
+    <bean id="wmActivityOrderService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8612"/>
+    </bean>
+    <bean id="wmReplicatorService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8613"/>
+    </bean>
+
+    <!-- 测试服务化 -->
+    <bean id="wmSettleTestService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8616"/>
+    </bean>
+    <!--代理商兼职扣款-->
+    <bean id="wmAgentMoneyService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="30000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8615"/>
+    </bean>
+
+    <bean id="wmActOrderChargeServiceTest" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/>
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="20000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.money"/>
+        <property name="remoteServerPort" value="8617"/>
+    </bean>
+
+    <bean id="wmTaskPoiThriftSubscribe" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8430"/>
+    </bean>
+
+    <bean id="wmPoiSpThriftSubscribe" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8431"/>
+    </bean>
+
+    <bean id="wmPoiThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8432"/>
+    </bean>
+
+    <bean id="wmPoiTagThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8437"/>
+    </bean>
+
+    <bean id="wmPoiAppThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8435"/>
+    </bean>
+
+    <bean id="wmPoiStatDataThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8440"/>
+    </bean>
+
+
+    <bean id="wmPoiContactThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8442"/>
+    </bean>
+
+    <bean id="wmThirdSpAreaThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8445"/>
+    </bean>
+
+    <bean id="wmAcctContactThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8446"/>
+    </bean>
+
+    <bean id="wmPoiCommitmentThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8448"/>
+    </bean>
+
+    <bean id="wmPoiQualificationInfoThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8451"/>
+    </bean>
+
+    <bean id="wmAuditPoiThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8452"/>
+    </bean>
+
+    <bean id="wmAppThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8453"/>
+    </bean>
+
+    <bean id="wmThirdPoiThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8454"/>
+    </bean>
+
+    <bean id="wmPoiThirdSpThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8455"/>
+    </bean>
+
+    <bean id="wmPoiTagDicThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8456"/>
+    </bean>
+
+    <bean id="wmPoiOplogThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8457"/>
+    </bean>
+
+    <bean id="wmPoiQualificationThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8458"/>
+    </bean>
+
+    <bean id="wmLogisticsThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8459"/>
+    </bean>
+
+    <bean id="wmPoiGroupBrandThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8460"/>
+    </bean>
+
+    <bean id="wmPoiProfileThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8465"/>
+    </bean>
+
+    <bean id="wmPoiLogoThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8464"/>
+    </bean>
+
+    <bean id="wmPoiAuditThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="1000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8466"/>
+    </bean>
+
+    <bean id="wmPoiLabelThriftService" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="wmThriftClientConnPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="serviceInterface" value="com.sankuai.mtthrift.testSuite.idlTest.Twitter"/> <!-- service接口名 -->
+        <property name="timeout" value="2000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="serverDynamicWeight" value="true"/>
+        <property name="appKey" value="com.sankuai.octo.waimaiTest"/>
+        <property name="remoteAppkey" value="com.sankuai.waimai.poi"/>
+        <property name="remoteServerPort" value="8468"/>
+    </bean>
+
+</beans>

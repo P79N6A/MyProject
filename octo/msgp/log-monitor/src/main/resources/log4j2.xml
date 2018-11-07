@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="300">
+    <Properties>
+        <Property name="module.name">log-monitor</Property>
+    </Properties>
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%d{yyyy/MM/dd HH:mm:ss.SSS} %t [%p] %c{1} (%F:%L) %msg%n"/>
+        </Console>
+
+        <!--XMDFile异步磁盘日志配置示例-->
+        <!--默认按天&按512M文件大小切分日志，默认最多保留30个日志文件。-->
+        <!--目录为/opt/logs/${appkey} 或 /data/applogs/${appkey}，优先选用磁盘挂载目录-->
+        <!--注意：fileName前会自动增加文件路径，只配置文件名即可-->
+        <XMDFile name="SERVICE-LOG" fileName="${module.name}.log"/>
+
+        <XMDFile name="ERROR-LOG" fileName="${module.name}.error.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+        </XMDFile>
+
+        <Scribe name="ScribeAppender">
+            <!-- 远程日志默认使用appkey作为日志名(app.properties文件中的app.name字段)，也可以选择用如下方式自定义scribeCategory。scribeCategory优先级高于appkey-->
+            <!-- <Property name="scribeCategory">data_update_test_lc</Property> -->
+            <LcLayout/>
+        </Scribe>
+
+        <Async name="ScribeAsyncAppender" blocking="false">
+            <AppenderRef ref="ScribeAppender"/>
+        </Async>
+
+    </appenders>
+
+    <Loggers>
+        <!-- Root Logger -->
+        <root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="SERVICE-LOG"/>
+            <AppenderRef ref="ERROR-LOG"/>                <!--ERROR日志单独输出到一个文件-->
+            <AppenderRef ref="ScribeAsyncAppender"/>          <!--日志传入远程日志中心 -->
+        </root>
+    </Loggers>
+
+</Configuration>

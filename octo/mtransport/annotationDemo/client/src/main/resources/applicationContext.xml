@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mtThriftPoolConfig" class="com.meituan.service.mobile.mtthrift.client.pool.MTThriftPoolConfig">
+        <property name="maxActive" value="50"/>
+        <property name="maxIdle" value="20"/>
+        <property name="minIdle" value="5"/>
+        <property name="maxWait" value="1000"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="false"/>
+    </bean>
+
+    <bean id="testClient" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="clusterManager" value="OCTO"/> <!-- 集群工作模式, ZK/MIX/OCTO/DIRECT, 默认为 ZK, 和之前版本一致 -->
+        <property name="mtThriftPoolConfig" ref="mtThriftPoolConfig"/><!-- 可不配置:默认maxActive=100,maxIdle=20,minIdle=5,maxWait=3000 -->
+        <property name="timeout" value="3000"/> <!-- thrift rpc 超时时间（毫秒） -->
+        <property name="appKey" value="com.sankuai.****.client"/> <!-- 本地 appkey, MIX/OCTO 模式下必须配置 -->
+        <property name="remoteAppkey" value="com.sankuai.****.service"/>  <!-- 目标 Server Appkey, MIX/OCTO 模式下必须配置  -->
+        <property name="serviceInterface" value="com.meituan.service.mobile.mtthrift.jiguang.TestService"/> <!-- service接口名, ZK/MIX 模式下不需配置 -->
+        <!--若remoteAppkey 下面有多个服务端口, 则需要制定对应端口-->
+        <property name="remoteServerPort" value="0"/>
+    </bean>
+
+
+    <bean id="mtthriftTestClient" class="com.meituan.service.mobile.mtthrift.jiguang.Client" init-method="test">
+        <property name="thriftClientProxy" ref="testClient"/>
+    </bean>
+
+
+</beans>

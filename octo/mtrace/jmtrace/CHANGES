@@ -1,0 +1,15 @@
+v1.1.1
+======
+
+2016-04-21
+
+    * Feature: 更新新的对外接口,便于后续组件接入,目前mtthrfit-1.6.4版本已支持
+    * Feature: 丰富上报数据结构包括返回状态包大小,中间件版本类型, 是否是异步调用
+    * Feature: 使用统一的idl包idl-mtrace
+    * Feature: Annotation 支持
+    * Feature: log4j appender 上报逻辑开发
+    * Feature: Mtrace Config File 配置是否上报数据,是否打印log
+    * Change : 全量上报调用数据
+    * Change : debug 字段设置的方式, 弹性设置debug值,便于实时采集调用链数据
+    * BugFix : collector 线程非daemon, 导致test case 不会自动退出
+    * BugFix : 原来根据时间戳判断是否采集数据, 高并发下会多采集样本

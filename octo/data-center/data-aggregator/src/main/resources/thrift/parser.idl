@@ -1,0 +1,21 @@
+namespace java com.sankuai.octo.parser
+
+enum Type {
+    TIMER,
+    COUNTER,
+    GAUGE,
+}
+
+struct Metric {
+    1: required string token,
+    2: required Type ktype,
+    3: required string key,
+    4: required double value,
+    5: optional map<string,string> tags,
+}
+
+service Parser {
+    i32 sendMetric(1: Metric metric),
+
+    i32 sendMetrics(1: list<Metric> metrics),
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mtThriftPoolConfig" class="com.meituan.service.mobile.mtthrift.client.pool.MTThriftPoolConfig">
+        <property name="maxActive" value="300"/>
+        <property name="maxIdle" value="100"/>
+        <property name="minIdle" value="10"/>
+        <property name="maxWait" value="2000"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="false"/>
+    </bean>
+
+    <bean id="clientProxy" class="com.meituan.service.mobile.mtthrift.proxy.ThriftClientProxy" destroy-method="destroy">
+        <property name="mtThriftPoolConfig" ref="mtThriftPoolConfig"/>
+        <property name="timeout" value="5000"/>
+        <property name="clusterManager" value="OCTO"/>
+        <property name="appKey" value="com.sankuai.octo.testMTthrift.Client"/>
+        <property name="remoteAppkey" value="com.meituan.inf.rpc.benchmark"/>
+        <property name="serviceInterface" value="com.sankuai.octo.benchmark.thrift.EchoService"/>
+        <property name="remoteServerPort" value="9999"/>
+        <property name="serverIpPorts" value="10.4.93.210:9999"/>
+    </bean>
+
+</beans>

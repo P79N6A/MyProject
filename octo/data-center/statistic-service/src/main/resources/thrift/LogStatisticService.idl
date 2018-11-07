@@ -1,0 +1,33 @@
+namespace java com.sankuai.octo.log.statistic.service
+include 'QpsLog.idl'
+include 'QpsResult.idl'
+
+service LogStatisticService {
+
+
+    /**
+    * 批量上报qps日志接口,qpsLogs为已经处理后日志的集合
+    * @param qpsLogs 上报的qps日志集合
+    * @return 标识是否上报成功
+    */
+    void batchUploadQpsLog(1:list<QpsLog.QpsLog> qpsLogs);
+
+    /**
+    * 批量上报降级流量qps日志接口,qpsLogs为已经处理后日志的集合
+    * @param qpsLogs 上报的qps日志集合
+    * @return 标识是否上报成功
+    */
+    void batchUploadDropQpsLog(1:list<QpsLog.QpsLog> qpsLogs);
+
+    /**
+	* 检索qps数据
+	* @param providerAppKey 服务提供方的appKey
+	* @param spanName 服务提供方的方法名
+	* @param startSecond 检索的起始时间
+	* @param endSecond 检索的终止时间
+	* @param type 日志类型,0为client,1为server
+	* @return 检索的qps result
+	*/
+    QpsResult.QpsResult retrieveQps(1:string providerAppKey, 2:string spanName, 3:i32 startSecond, 4:i32 endSecond,5:i32 type);
+
+}

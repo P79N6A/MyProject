@@ -1,0 +1,74 @@
+#yui3-css-stamp.skin-sam-w-tree-base { display:none }
+/*widget-tree-small*/
+.widget-tree-small { z-index:1000; position: absolute; font-size:12px;  }
+.widget-tree-small .widget-tree-text { text-decoration: none; line-height:18px; padding: 1px 3px; }
+.widget-tree-small .widget-tree-item { padding-left: 15px; white-space: nowrap; zoom:1; }
+.widget-tree-small .widget-tree-unembed { max-height:350px; _height:350px; }
+.widget-tree-small .widget-tree-unembed-tree-foot {  border-top: none;}
+.widget-tree-small .widget-tree-icon-mid { padding-left:18px; background:url(../img/tree18.png) no-repeat -131px -13px; zoom:1; }
+.widget-tree-small .widget-tree-icon-top { padding-left:18px; border:1px solid red; background:url(../img/tree18.png) no-repeat -98px -15px; zoom:1; }
+.widget-tree-small .widget-tree-icon-bottom { padding-left:18px; background:url(../img/tree18.png) no-repeat -99px -18px; zoom:1;}
+
+/*widget-tree-big*/
+.widget-tree-big { z-index:1000; position: absolute;  font-size:14px; }
+.widget-tree-big .widget-tree-text { text-decoration: none; line-height:24px; padding: 1px 3px; }
+.widget-tree-big .widget-tree-item { padding-left: 16px; white-space: nowrap; zoom:1; }
+.widget-tree-big .widget-tree-unembed{ max-height:450px; _height:450px; }
+.widget-tree-big .widget-tree-icon-mid { padding-left:18px; background:url(../img/tree24.png) no-repeat 1px -11px; zoom:1; }
+.widget-tree-big .widget-tree-icon-top { padding-left:24px; border:1px solid red; background:url(../img/tree24.png) no-repeat -35px -15px; zoom:1; }
+.widget-tree-big .widget-tree-icon-bottom { padding-left:18px; background:url(../img/tree24.png) no-repeat -66px -11px; padding-top:5px; zoom:1; }
+.widget-tree-big .widget-tree-tree-bg { background: #F2F2F2; }
+.width-tree-root-nodata { color: #000; }
+
+/*公用样式*/
+.widget-tree-small .widget-tree-line, .widget-tree-big .widget-tree-line { background: url(../img/line.gif) repeat-y transparent; }
+.widget-tree-small .widget-tree-root, .widget-tree-big .widget-tree-root { padding-bottom:5px; padding-left:0; overflow-x: auto; overflow-y:auto; padding-top:3px; }
+.widget-tree-small .widget-tree-leaf, .widget-tree-big .widget-tree-leaf { background:url(../img/icon_all.png) no-repeat -30px -37px; padding-left:2px; padding-right:10px; width:5px; height:12px;}
+.widget-tree-small a:hover, .widget-tree-big a:hover { color:#0ae; text-decoration: none; cursor:pointer; background:none; }
+.widget-tree-small a.action-links, .widget-tree-big a.action-links { color:#08c; margin-right:10px; padding:2px 0; }
+.widget-tree-small .line-hover, .widget-tree-big .line-hover {  padding:0.1px 0; border-bottom:1px dashed #666;}
+.widget-tree-small a.action-links:hover, .widget-tree-big a.action-links:hover { color:#059;}
+.widget-tree-small .widget-tree-search-box input, .widget-tree-big .widget-tree-search-box input { margin-bottom:6px; }
+.widget-tree-small div.searchbox-with-event, .widget-tree-big div.searchbox-with-event { background: #F2F2F2; max-height:350px; overflow-x: hidden; border:1px solid #89B4D6; border-top: none; }
+.widget-tree-small .no-searchbox, .widget-tree-big .no-searchbox { background: #F2F2F2; overflow-x: hidden; max-height:350px; border:1px solid #89B4D6; }
+.widget-tree-small .widget-tree-search-nodata, .widget-tree-big .widget-tree-search-nodata { height:22px; line-height:22px; padding-left:6px; }
+.widget-tree-small .loading, .widget-tree-big .loading { background:url(../img/icon-loading16x16.gif) no-repeat; display: inline-block; width: 16px; height: 14px; color: #399; }
+.widget-tree-small .widget-tree-icon, .widget-tree-big .widget-tree-icon { cursor:pointer; }
+.widget-tree-unembed { border:1px solid #ccc; border-bottom:transparent; background:#fff; color:#000; font-size:13px; z-index:100; box-shadow: 2px 2px 10px #999; -moz-box-shadow:2px 2px 10px #999; -webkit-box-shadow:2px 2px 10px #999; }
+.widget-tree-foot { border:1px solid #ccc; padding:5px; overflow:hidden; background:#f5f5f5; }
+.widget-tree-foot .btn { height:auto; display: inline-block; padding: 4px 12px; margin:0; font-size: 14px; line-height: 20px; color: #333; text-align: center; text-shadow: 0 1px 1px rgba(255,255,255,.75); vertical-align: middle; cursor: pointer; background-color: #f5f5f5; border: 1px solid #ccc; border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25); border-bottom-color: #b3b3b3; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05); -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05); box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.05); background-image: none; filter: none; text-decoration: none; } 
+.widget-tree-foot .btn.btn-primary { background-color: #0ae; color:#fff; text-shadow: 0 -1px 0 rgba(0,0,0,.25); border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25); }
+.widget-tree-foot .btn:hover, .widget-tree-foot .btn:focus { color: #333; background-color: #e6e6e6; }
+.widget-tree-foot .btn.btn-primary:hover, .widget-tree-foot .btn.btn-primary:focus { background-color: #09d; color:#fff; }
+.widget-tree-unembed .btn-block { display: block; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding-left:0; padding-right:0; }
+.unembed-tree-foot { box-shadow:inset 0 1px 0 #fff; box-shadow: 2px 2px 10px #999; -moz-box-shadow:2px 2px 10px #999; -webkit-box-shadow:2px 2px 10px #999; }
+.widget-tree-item .widget-tree-itemline .widget-tree-checkbox { margin:0 4px 2px 0; }
+
+/* font-awesome */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.eot?v=4.2.0');
+  src: url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('https://cs0.meituan.net/mtfe_cos-ui/src/font-awesome/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.fa-folder:before { content: "\f07b"; }
+.fa-folder-open:before { content: "\f07c"; }
+.fa-caret-down:before { content: "\f0d7"; }
+.fa-caret-right:before { content: "\f0da"; }
+.fa-file-o:before { content: "\f016"; }
+
+.widget-tree-item .fa { display:inline; }
+.widget-tree-item .fa-folder-open, .widget-tree-item  .fa-folder { color:#f7bf14;}
+.widget-tree-item  .fa-folder { padding-right:2px; }
+.widget-tree-item .fa-caret-right, .widget-tree-item .fa-caret-down { color:#666; padding-top:0; padding-bottom:0; }
+.widget-tree-item .fa-caret-right { padding-left:6px; padding-right:7px;}
+.widget-tree-item .fa-caret-down { padding-left:5px; padding-right:5px;}
+.widget-tree-item .fa-file-o { color:#666; padding-left:2px; padding-right:2px; }
+.widget-tree-small .widget-tree-text span, .widget-tree-big .widget-tree-text span { color:#999; }
+
+/*开源CSS框架可能给P元素加上额外的样式，在这里覆盖*/
+.widget-tree-itemline { margin:0; padding:0; height:24px; }
+.widget-tree-small .widget-tree-itemline { height:18px; }
+

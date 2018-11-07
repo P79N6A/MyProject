@@ -1,0 +1,10 @@
+package ${PACKAGE};
+
+import com.meituan.service.mobile.mtthrift.server.MTIface;
+import org.apache.thrift.TException;
+
+public class ${SERVICE}Impl implements ${SERVICE}.Iface {
+
+    ${METHOD}
+
+}

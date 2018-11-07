@@ -1,0 +1,32 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/huixiangbo/Documents/dev/octo/plugin
+-- The C compiler identification is AppleClang 8.1.0.8020038
+-- The CXX compiler identification is AppleClang 8.1.0.8020038
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- THRIFTNB_LIBRARY /Users/huixiangbo/Documents/dev/octo/plugin/third_party/thrift/lib/libthriftnb.a
+-- MUDUO_BASE_LIBRARY /usr/lib64/libmuduo_base.a
+-- MUDUO_NET_LIBRARY /usr/lib64/libmuduo_net.a
+sh: run.sh: No such file or directory
+-- Could NOT find LIBCURL (missing:  LIBCURL_LIBRARY) 
+-- LIBCURL_INCLUDE_DIR 
+-- LIBCURL_LIBRARY LIBCURL_LIBRARY-NOTFOUND
+-- CMAKE_CXX_FLAGS -g -Wall -O2 -DMUDUO_STD_STRING -DHAVE_NETINET_IN_H
+-- CMAKE_CXX_FLAGS -g -Wall -O2 -DMUDUO_STD_STRING -DHAVE_NETINET_IN_H
+cp: /Users/huixiangbo/Documents/dev/octo/plugin/cmake-build-debug/script/run: No such file or directory
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+LIBCURL_LIBRARY (ADVANCED)
+    linked by target "cplugin" in directory /Users/huixiangbo/Documents/dev/octo/plugin/core
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/huixiangbo/Documents/dev/octo/plugin/cmake-build-debug/CMakeFiles/CMakeOutput.log".

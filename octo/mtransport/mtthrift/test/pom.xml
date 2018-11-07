@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sankuai.octo.mtthrift</groupId>
+    <artifactId>test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.7</java.version>
+        <springframework-version>4.1.1.RELEASE</springframework-version>
+        <slf4j-version>1.5.10</slf4j-version>
+        <jetty-version>8.1.10.v20130312</jetty-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.sankuai</groupId>
+                <artifactId>inf-bom</artifactId>
+                <version>1.3.6-CELL</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.meituan.service.mobile</groupId>
+            <artifactId>mtthrift</artifactId>
+            <version>1.8.6-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dianping.cat</groupId>
+            <artifactId>cat-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sankuai.meituan</groupId>
+            <artifactId>mtconfig-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.meituan.mtrace</groupId>
+            <artifactId>mtrace</artifactId>
+            <version>1.1.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.meituan.mtrace</groupId>
+            <artifactId>mtrace-api</artifactId>
+            <version>1.1.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.meituan.inf</groupId>
+            <artifactId>xmd-log4j2</artifactId>
+        </dependency>
+        <!--如果线上服务已接入scribe-log4j2，请升级到本版本。注意groupId已变更-->
+        <dependency>
+            <groupId>com.meituan.log</groupId>
+            <artifactId>scribe-log4j2</artifactId>
+            <version>1.2.4-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sankuai.octo</groupId>
+            <artifactId>mns-invoker</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sankuai.octo</groupId>
+            <artifactId>idl-sgagent</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sankuai.octo</groupId>
+            <artifactId>idl-common</artifactId>
+            <version>1.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${springframework-version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sankuai.mms</groupId>
+            <artifactId>mms-boot</artifactId>
+            <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-jsp</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jmx</artifactId>
+            <version>${jetty-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sankuai.octo</groupId>
+            <artifactId>benchmark-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>3.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.meituan.service.inf</groupId>
+            <artifactId>kms-java-client</artifactId>
+            <version>0.7.1</version> <!-- kms需要是0.7.0以上，不然会有循环依赖 -->
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.29</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.45</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dianping.rhino</groupId>
+            <artifactId>rhino-client</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <!--熔断降级使用mcc配置-->
+        <dependency>
+            <groupId>com.dianping.rhino</groupId>
+            <artifactId>rhino-config-mcc</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.dianping.rhino</groupId>
+            <artifactId>rhino-redis-squirrel</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14</version>
+                <configuration>
+                    <forkMode>once</forkMode>
+                    <argLine>-Dfile.encoding=UTF-8 -javaagent:jacocoagent.jar=destfile=${project.build.directory}/jacoco.exec,append=false</argLine>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <properties>
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>false</value>
+                        </property>
+                    </properties>
+                    <systemProperties>
+
+                    </systemProperties>
+                    <reportsDirectory>target/surefire-reports</reportsDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.6.201602180812</version>
+                <executions>
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>
+                                ${project.build.directory}/coverage-reports/jacoco-ut.exec
+                            </destFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>
+                                ${project.build.directory}/jacoco.exec
+                            </dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.sankuai.dolphin</groupId>
+                <artifactId>thrift-maven-plugin</artifactId>
+                <version>1.0.1-SNAPSHOT</version>
+                <configuration>
+                    <appkey>com.sankuai.inf.mtthrift.testServer</appkey>
+                    <codeDir>src/main/java</codeDir><!--生成代码目标路径。可以不填写。默认src/main/java-->
+                    <thriftVersion>0.8.0</thriftVersion><!--Thrift编译器版本。可以不填写。默认0.8.0-->
+                    <language>java</language><!--目标语言。可以不填写。默认java-->
+                    <idlDir>src/main/resources</idlDir><!--idl文件所在路径。可以不填写。默认src/main/resources/thrift-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

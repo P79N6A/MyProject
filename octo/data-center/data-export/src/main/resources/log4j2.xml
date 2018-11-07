@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="300">
+    <Properties>
+        <Property name="app.key">data-export</Property>
+        <Property name="appKey">com.sankuai.inf.data.export</Property>
+        <Property name="app.logdir">/opt/logs/mobile/${app.key}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <Patternlayout pattern="%d{DEFAULT} [%t] %-5p (%C{1}:%L) - %m%n"/>
+        </Console>
+
+        <XMDFile name="logFile" fileName="${app.key}.log"></XMDFile>
+        <!-- jmonitor -->
+        <XMDFile name="jmonitorappender" fileName="${app.key}.jmonitor.log"></XMDFile>
+    </Appenders>
+
+
+    <Loggers>
+        <logger name="jmonitor" level="warn" includeLocation="true" additivity="false">
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+        <logger name="jmonitorlogstore" level="warn" includeLocation="true" additivity="false">    
+            <AppenderRef ref="jmonitorappender"/>
+        </logger>
+
+        <!-- Root Logger -->
+        <root level="INFO" includeLocation="true">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="logFile"/>
+        </root>
+    </Loggers>
+</Configuration>

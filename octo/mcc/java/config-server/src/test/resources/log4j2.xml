@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF" shutdownHook="disable">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="%d{yyyy/MM/dd HH:mm:ss.SSS} %t [%p] %c{1} (%F:%L) %msg%n" />
+        </Console>
+
+        <!--异步磁盘appender，默认按天&按512M文件大小切分日志，默认最多保留30个日志文件，默认为非阻塞模式-->
+        <XMDFile name="XMDFileAppender" fileName="com.sankuai.cos.mtconfig.log">
+        </XMDFile>
+
+        <!--ERROR日志、WARN日志单独输出到一个文件-->
+        <XMDFile name="ERROR-LOG" fileName="error.log">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </XMDFile>
+
+        <Scribe name="ScribeAppender">
+            <LcLayout/>
+        </Scribe>
+        <Async name="ScribeAsyncAppender" blocking="false">
+            <AppenderRef ref="ScribeAppender"/>
+        </Async>
+
+    </appenders>
+
+    <loggers>
+
+        <logger name="org.springframework" level="info" additivity="true">
+            <appender-ref ref="XMDFileAppender"/>
+        </logger>
+
+        <logger name="com.meituan.jmonitor" level="info" additivity="true">
+            <appender-ref ref="XMDFileAppender"/>
+        </logger>
+
+        <logger name=" org.apache.logging.log4j" level="fatal" additivity="true">
+            <appender-ref ref="XMDFileAppender"/>
+        </logger>
+
+        <!-- Root Logger -->
+        <root level="info">
+            <appender-ref ref="Console" />
+            <appender-ref ref="ERROR-LOG" />
+            <appender-ref ref="AsyncErrorLog"/>     <!--异常日志上报要添加到root-->
+            <appender-ref ref="XMDFileAppender"/>
+            <appender-ref ref="ScribeAppender"/>
+        </root>
+    </loggers>
+</configuration>

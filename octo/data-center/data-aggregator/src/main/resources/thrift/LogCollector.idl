@@ -1,0 +1,13 @@
+namespace java com.sankuai.octo.logcollector.thrift.service
+include 'fb303.idl'
+include 'log.idl'
+include 'oldlog.idl'
+
+service LogCollectorService extends fb303.FacebookService {
+
+    i32 uploadLog(1:oldlog.SGLog log);
+ 
+    i32 uploadModuleInvoke(1:oldlog.SGModuleInvokeInfo log);
+
+    i32 uploadCommonLog(1:log.CommonLog log);
+}

@@ -1,0 +1,25 @@
+version: v1
+common:
+  os: centos7   # 如无特殊情况，请使用centos7，不填会默认centos7.
+  tools:
+    oracle-jdk: 7
+build:
+  tools:
+    maven: 3.3.3
+  run:
+    workDir: ./mtransport/mtransport-benchmark/http-server/      # workDir是代码仓库的相对目录
+    cmd:
+      - sh compile.sh
+  target:
+    distDir: ./mtransport/mtransport-benchmark/http-server/target/ # distDir是代码仓库的相对目录
+    files:          # files中的文件描述是相对distDir的
+      - ./*.war
+      - ../run.sh
+      - ../check.sh
+autodeploy:
+    targetDir: /opt/meituan/mtransport-benchmark/http-server/
+    env:
+    run: sh run.sh
+    check: sh check.sh
+    checkRetry: 1 # 缺省值为1，可加大增加check命令执行次数，拉长检查时间
+    checkInterval: 1s # 缺省值为1s，建议此数值不宜过大。

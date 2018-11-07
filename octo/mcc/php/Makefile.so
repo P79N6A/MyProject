@@ -1,0 +1,64 @@
+CFLAGS = -g -Wno-deprecated -DHAVE_NETINET_IN_H
+
+INCLUDE =-I./ \
+		-I../../.. \
+		-I../../../thrift \
+		-I../../../idl/ \
+		-I../../../comm/ \
+		-I../../../util \
+		-I../../../mtconfig \
+		-I../config \
+		-I/usr/local/java/include \
+		-I/usr/local/java/include/linux \
+		-I/System/Library/Frameworks/JavaVM.framework/Headers/ \
+
+LIB = -L./ -levent -lthriftnb -lthrift\
+	-lpthread \
+	-lm \
+
+VPATH = ../../../util \
+		../../../mtconfig \
+		../../../comm \
+		../config \
+
+
+OUTPUT = libPHPSG_Agent.so
+
+OUTPUT_MAC  = libPHPSG_Agent.dylib
+
+OBJS    = sg_agent_config_client.o \
+		sg_agent_config_client.o \
+		SGAgent.o \
+		MtConfig_types.o \
+		sgagent_types.o \
+		php_sg_agent_config_client.o \
+
+all:$(OUTPUT)
+
+mac:$(OUTPUT_MAC)
+
+.SUFFIXES: .o .cpp
+.cpp.o:
+	$(CXX) $(CFLAGS) $(INCLUDE) -fPIC -c $^
+
+.o:
+	$(CXX) $(CFLAGS) $(INCLUDE) -fPIC -o $@ $^
+
+$(OUTPUT): $(OBJS)
+	$(CXX) $(CFLAGS) -fPIC -shared -rdynamic -o $@ $^ ${LIB}
+
+$(OUTPUT_MAC): $(OBJS)
+	$(CXX) $(CFLAGS) -fPIC -dynamiclib -o $@ $^ ${LIB}
+
+
+clean:
+	rm -f *.o *.~ *.bak
+	rm -f $(OUTPUT)
+	rm -f $(OUTPUT_MAC)
+
+dep:
+	mkdep $(INCLUDE) $(SOURCES) > .depend
+
+ifneq ($(wildcard .depend),)
+include .depend
+endif

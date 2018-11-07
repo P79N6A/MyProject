@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="helloServiceImpl" class="com.meituan.service.mobile.mtthrift.HelloServiceImpl"></bean>
+    <bean id="echoServiceImpl" class="com.meituan.service.mobile.mtthrift.EchoServiceImpl"></bean>
+
+    <!--<bean id="nettyServerPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher" init-method="publish" destroy-method="destroy">-->
+    <!--<property name="serviceInterface" value="com.meituan.service.mobile.mtthrift.HelloService"/> &lt;!&ndash; 接口类 &ndash;&gt;-->
+    <!--<property name="serviceImpl" ref="helloServiceImpl"/> &lt;!&ndash; 实现类 &ndash;&gt;-->
+    <!--<property name="appKey" value="com.sankuai.inf.mtthrift.testServer"/>  &lt;!&ndash; 本地 appkey，建议重新注册一个 &ndash;&gt;-->
+    <!--<property name="port" value="10001"/> &lt;!&ndash; Server 监听端口 &ndash;&gt;-->
+    <!--<property name="serverType" value="Netty"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="thriftServerPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher" init-method="publish" destroy-method="destroy">-->
+    <!--<property name="serviceInterface" value="com.meituan.service.mobile.mtthrift.HelloService"/> &lt;!&ndash; 接口类 &ndash;&gt;-->
+    <!--<property name="serviceImpl" ref="helloServiceImpl"/> &lt;!&ndash; 实现类 &ndash;&gt;-->
+    <!--<property name="appKey" value="com.sankuai.inf.mtthrift.testServer"/>  &lt;!&ndash; 本地 appkey，建议重新注册一个 &ndash;&gt;-->
+    <!--<property name="port" value="10001"/> &lt;!&ndash; Server 监听端口 &ndash;&gt;-->
+    <!--</bean>-->
+
+    <bean id="defaultAuthHandler" class="com.meituan.service.mobile.mtthrift.auth.DefaultAuthHandler">
+        <property name="appkeyTokenMap">
+            <map>
+                <entry key="com.sankuai.inf.mtthrift.testClient" value="123456"/>
+            </map>
+        </property>
+        <property name="appkeyWhitelist">
+            <set>
+                <value>com.sankuai.inf.mtthrift.testClient</value>
+            </set>
+        </property>
+        <property name="authType" value="requestAuth" />
+        <property name="period" value="5" />
+    </bean>
+
+    <!--<bean id="configClient" class="com.sankuai.meituan.config.MtConfigClient">-->
+        <!--<property name="appkey" value="com.sankuai.inf.mtthrift.testServer"/>-->
+    <!--</bean>-->
+    <!--<bean id="mccAuthDataSource" class="com.meituan.service.mobile.mtthrift.MccAuthDataSource">-->
+        <!--<property name="configClient" ref="configClient"/>-->
+    <!--</bean>-->
+    <!--<bean id="mccAuthHandler" class="com.meituan.service.mobile.mtthrift.auth.DefaultAuthHandler">-->
+        <!--<property name="authDataSource" ref="mccAuthDataSource" />-->
+    <!--</bean>-->
+
+    <bean id="executor" class="java.util.concurrent.ThreadPoolExecutor">
+        <constructor-arg value="4" index="0"/>
+        <constructor-arg value="32" index="1"/>
+        <constructor-arg value="30" index="2"/>
+        <constructor-arg value="SECONDS" index="3"/>
+        <constructor-arg index="4">
+            <bean class="java.util.concurrent.LinkedBlockingQueue">
+                <constructor-arg value="100"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="helloServiceBean" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServiceBean">
+        <property name="serviceImpl" ref="helloServiceImpl" />
+        <property name="serviceExecutor" ref="executor" />
+        <property name="methodExecutor">
+            <map>
+                <entry key="sayBye" value-ref="executor"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="echoServiceBean" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServiceBean">
+        <property name="serviceImpl" ref="echoServiceImpl" />
+    </bean>
+
+    <bean id="multiSerivceServerPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="port" value="10001"/>
+        <property name="serviceProcessorMap">
+            <map>
+                <entry key="com.meituan.service.mobile.mtthrift.HelloService" value-ref="helloServiceBean"/>
+                <entry key="com.meituan.service.mobile.mtthrift.EchoService" value-ref="echoServiceBean"/>
+            </map>
+        </property>
+        <!--<property name="maxServerConn" value="2"/>-->
+        <!--<property name="limitCount" value="60" />-->
+        <!--<property name="limitSecondsTime" value="60" />-->
+        <!--<property name="authHandler" ref="defaultAuthHandler" />-->
+    </bean>
+
+    <bean id="serverPublisher" class="com.meituan.service.mobile.mtthrift.proxy.ThriftServerPublisher"
+          init-method="publish" destroy-method="destroy">
+        <property name="appKey" value="com.sankuai.inf.mtthrift.testServer"/>
+        <property name="port" value="10002"/>
+        <property name="serviceInterface" value="com.meituan.service.mobile.mtthrift.HelloService" />
+        <property name="serviceImpl" ref="helloServiceImpl" />
+        <!--<property name="maxServerConn" value="2"/>-->
+        <!--<property name="limitCount" value="60" />-->
+        <!--<property name="limitSecondsTime" value="60" />-->
+        <!--<property name="authHandler" ref="defaultAuthHandler" />-->
+    </bean>
+
+</beans>
