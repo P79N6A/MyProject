@@ -1,6 +1,0 @@
-#yui3-css-stamp.skin-sam-p-mask { display:none }
-/*dialog中的遮罩样式*/
-.plugin-mask .overlay-mask { position:absolute; top:0; left:0; background-color:black; opacity:0.25; filter:alpha(opacity = 25); }
-.plugin-mask .overlay-iframe { position:absolute; top:-29px; left:0; width:1px; height:1px; border:none; background:transparent; opacity:0; filter:alpha(opacity=0); }
-.plugin-mask .overlay-mask-content { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #A5B2BF; min-width: 300px; padding: 10px; position: absolute; padding-left:20px; text-align: left; z-index: 30; }
-.plugin-mask .overlay-mask-hidden { display: none; }

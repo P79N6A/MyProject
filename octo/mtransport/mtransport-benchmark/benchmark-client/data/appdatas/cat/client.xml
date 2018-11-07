@@ -1,7 +1,0 @@
-<!-- client.xml -->
-<config mode="client">
-    <servers>
-        <server ip="10.1.110.23" port="2280" />
-        <server ip="10.1.6.128" port="2280" />
-    </servers>
-</config>

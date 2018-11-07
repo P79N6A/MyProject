@@ -1,5 +1,0 @@
-
-service HeartbeatService
-{
-    string getStatus()
-}

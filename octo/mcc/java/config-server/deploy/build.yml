@@ -1,5 +1,0 @@
-image: cos6
-env:
-    - PATH=$PWD/bin:$PATH
-script:
-    - bash ${PRE_DEPLOY_SCRIPT}

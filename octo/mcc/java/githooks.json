@@ -1,5 +1,0 @@
-{
-  "pre-receive": [
-    "@mtfe/git-hooks-jshint"
-  ]
-}

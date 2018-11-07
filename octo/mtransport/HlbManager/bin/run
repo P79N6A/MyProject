@@ -1,9 +1,0 @@
-#!/bin/sh
-cd /opt/meituan/apps/HlbManager/
-NUM=`ps -ef |grep -v grep | grep -c /opt/meituan/apps/HlbManager/HlbManager`
-
-if [ $NUM -lt 1 ]
-then
-    ulimit -c unlimited
-    exec setuidgid sankuai /opt/meituan/apps/HlbManager/HlbManager > /dev/null 2>&1
-fi

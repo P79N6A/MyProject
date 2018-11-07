@@ -1,8 +1,0 @@
-yf-inf-mafka-client-test01.corp.sankuai.com
-yf-inf-mafka-client-test02.corp.sankuai.com
-gh-inf-mafka-castlecommon-test01.corp.sankuai.com
-gh-inf-mafka-castlecommon-test02.corp.sankuai.com
-gh-inf-mafka-castlecommon-test03.corp.sankuai.com
-gh-inf-mafka-castlecommon-test04.corp.sankuai.com
-gh-inf-mafka-castlecommon-test05.corp.sankuai.com
-gh-inf-mafka-castlecommon-test06.corp.sankuai.com

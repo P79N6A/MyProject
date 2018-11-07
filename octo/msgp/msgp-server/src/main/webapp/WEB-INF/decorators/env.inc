@@ -1,1 +1,0 @@
-{env:'local', builddate: '', buildVersion: ''};
